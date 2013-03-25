@@ -1,0 +1,27 @@
+<?php header('Content-type: application/rss+xml'); ?>
+<?php echo '<?xml version="1.0" encoding="UTF-8" ?>'?> 
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+	<title>Anuncios Avisoya</title>
+	<description>Anuncios de avisoya.com sitio web donde publicas anuncios de una manera sencilla</description>
+    <language>es</language>
+    <copyright>Avisoya</copyright>
+	<link>http://www.avisoya.com</link>
+    <atom:link href="http://www.avisoya.com/rss" rel="self" type="application/rss+xml" />
+
+    <?php foreach ($listClasificadosrss as $item) : ?>
+
+    <item>
+        <title> Clasificados <?php echo  $item->ciudad  ?> <?php echo  substr(strip_tags($item->nombre),0,90);?></title>
+        <link>http://www.avisoya.com/clasificado/<?php echo $item->slug ?>/</link>
+        <description><![CDATA[<?php echo  substr(strip_tags($item->nombre),0,90);?>]]></description>
+        <category><?php echo $item->categoria ?></category>
+        <author>info@avisoya.com (avisoya)</author>
+        <pubDate><?php echo date(DATE_RSS, strtotime($item->fecha_at))?></pubDate>
+    </item>
+<?php endforeach ?>
+</channel>
+</rss>
+
+
+

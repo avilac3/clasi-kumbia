@@ -1,0 +1,45 @@
+<script type="text/javascript"> 
+  function pregunta(){ 
+    return confirm('¿Estas seguro de Eliminar esta categoria?'); 
+  } 
+</script>
+
+<?php View::content() ?>
+
+<div id="scaffold">
+    
+    <?php if ($results->items) : ?>
+        <table>
+            <thead><tr>                    
+                    <th>Img</th>
+                    <th>Nombre</th>                    
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr></thead>
+            <tbody>
+            <?php foreach ($results->items as $result) : ?>
+                <tr>
+                    <td width="110px";><?php echo Html::img($result->ruta,'',"height=\"90px\" width=\"100px\"")  ?></td>
+                    <td><?php echo $result->nombre ?></td>
+                    <td><?php echo $result->descripcion ?></td>
+
+                    <td><?php echo Html::linkAction("editar/$result->id/", 'Editar') ?> |
+                    <?php echo Html::linkAction("borrar/$result->id/", 'Borrar','onClick="return pregunta();"') ?> |
+                </td>
+            </tr>
+            <?php endforeach ?>
+                </tbody>
+            </table>
+    
+    <?php View::partial('paginators/extended', false, array('page' => $results, 'url' => Router::get('controller_path') . '/index')); ?>
+
+    <?php else : // Si no hay items?>
+                        <h2>No hay ningún registro</h2>
+    <?php endif ?>
+    <div class="actions">
+        <?php echo Html::linkAction("crear/", 'Crear registro') ?>
+    </div>
+</div>
+
+
+

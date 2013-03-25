@@ -1,0 +1,15 @@
+<strong>Rellena el cuadro con tu nombre: </strong>
+<?php 
+	echo Form::open('captcha/');
+	echo Form::text('Datos.nombre');
+ 
+	// Cargamos la librería y le pedimos un código html
+	Load::Lib("recaptcha");
+	echo reCaptcha::html($previousError);	
+ 
+	echo Form::submit('Enviar datos');
+        
+        form::close();
+?>
+
+

@@ -1,0 +1,22 @@
+<ul class="clasilista">
+    <?php foreach ($listClasificados->items as $item) : ?>
+    
+    <li>
+     <?php echo Html::img($item->ruta,'')  ?> 
+     <?php echo Html::link("clasificado/$item->slug/", substr(strip_tags($item->nombre),0,90)) ?>...
+     <div class="barrainfo">Ciudad&nbsp;<?php echo Html::link("ciudad/$item->ciudad/",$item->ciudad);?>&nbsp;--&nbsp;Categoria&nbsp; <?php echo Html::link("categoria/$item->categoria/",$item->categoria); ?> &nbsp;--&nbsp; Visitas &nbsp; <?php echo $item->visitas ?></div>
+    </li>
+    
+    <?php endforeach; ?>
+    <br>
+    <?php if(isset($url)) { ?>
+    
+    	
+    	<?php View::partial('paginators/classic', false, array('page' => $listClasificados, 'url'=>$url )); ?>
+    	<?php } else { ?>
+    		<?php View::partial('paginators/classic', false, array('page' => $listClasificados )); ?>
+    	<?php } ?>
+
+    
+    <br>
+</ul>

@@ -1,0 +1,20 @@
+<?php Tag::css('scaffold') ?>
+<div id="scaffold">
+    <?php View::content(); ?>
+    <h1>Categoria: <span>editar</span></h1></br>
+    <?php echo Form::open(null, 'post', 'class="scaffold"') ?>    
+    
+    <label for="categorias_nombre" class="required">Nombre <em>*</em></label>
+    <?php echo Form::text('categorias.nombre') ?> 
+    
+    <label for="categorias_nombre" class="required">Nombre <em>*</em></label>
+    <?php echo Form::textarea('categorias.descripcion') ?>
+    
+    
+    <?php echo Form::hidden('categorias.id') ?>    
+    <input type="submit" value="Enviar" />
+    <?php echo Form::close() ?>
+    <div class="actions">
+        <?php echo Html::linkAction('index', 'Listar') ?>
+    </div>
+</div>

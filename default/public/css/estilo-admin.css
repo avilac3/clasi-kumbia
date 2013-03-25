@@ -1,0 +1,74 @@
+/* 
+    Document   : avisoya-estilo-admin
+    Created on : 10-dic-2011, 14:48:40
+    Author     : carlosandresavila
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+/*
+** General (Cuerpo de la página y otros)
+*/
+
+.clear{
+	clear:both;
+	}
+img{
+	border:none;
+	}
+/*
+** Menu
+*/
+.menuContainer{
+	background:#09F;
+	}
+ul#menu a:hover, ul#menu ul, ul#menu li:hover{
+            background:#000000;
+	} 
+.menuContainer ul{
+	list-style:none;	
+	margin:0;
+	padding:0;
+	}
+ul#menu li{
+	float:left;
+	position:relative;
+	margin-right:10px;
+	}
+ul#menu a{
+	font-family: 'Droid Sans', sans-serif;
+        font-size: 16px;
+        color:#FFF;
+	text-decoration:none;
+	padding:10px;
+	display:block;
+        
+	}
+ul#menu ul{
+	position:absolute;
+	left:0;
+	display:none;
+	}
+ul#menu li:hover ul{
+	display:block;
+}
+ul#menu li:hover ul li{
+	margin:0;
+}
+ul#menu li:hover ul li a{
+	width:150px;
+	}
+ul#menu li:hover ul a:hover{
+	background:#0C3;
+}
+
+

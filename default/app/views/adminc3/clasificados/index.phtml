@@ -1,0 +1,36 @@
+<?php Tag::css('scaffold') ?>
+<div id="scaffold">
+    <?php View::content(); ?>
+    <h1>Video</h1>    
+    <?php if ($listClasificados->items) : ?>
+      
+    <table>
+            <thead><tr>                    
+                    <th width="75%">Clasificado</th>                    
+                    <th>Estatus</th>
+                    <th>Visitas</th>
+                    <th>Acciones</th>
+                </tr></thead>
+            <tbody>
+            <?php foreach ($listClasificados->items as $item) : ?>
+                <tr>                                        
+                    <td><?php echo $item->nombre ?></td>
+                    <td><?php echo $item->estatus ?></td>
+                    <td><?php echo $item->visitas ?></td>
+                    <td><?php echo Html::linkAction("ver/$item->id/", 'Ver') ?> |
+                    <?php echo Html::linkAction("editar/$item->id/", 'Editar') ?> |
+                    <?php echo Html::linkAction("borrar/$item->id/", 'Borrar') ?> |
+                </td>
+            </tr>
+            <?php endforeach ?>
+                </tbody>
+            </table>
+    <?php View::partial('paginators/extended', false, array('page' => $listClasificados, 'url' => Router::get('controller_path') . '/index')); ?>
+
+    <?php else : // Si no hay items?>
+                        <h2>No hay ningún registro</h2>
+    <?php endif ?>
+    <div class="actions">
+        <?php echo Html::linkAction("buscar/", 'Crear registro') ?>
+    </div>
+</div>

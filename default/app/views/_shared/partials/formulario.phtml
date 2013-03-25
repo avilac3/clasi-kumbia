@@ -1,0 +1,82 @@
+<!--para el textarea-->
+<script type="text/javascript">
+$(document).ready(function(){    
+  $('#clasificados_nombre').maxlength({   
+    events: [], // Array of events to be triggerd    
+    maxCharacters: 360, // Characters limit   
+    status: true, // True to show status indicator bewlow the element    
+    statusClass: "status", // The class on the status div  
+    statusText: "Caracteres", // The status text  
+    notificationClass: "notification",	// Will be added when maxlength is reached  
+    showAlert: true, // True to show a regular alert message    
+    alertText: "Excedio la Cantidad de Caracteres Permitidos", // Text in alert message   
+    slider: false // True Use counter slider    
+  }); 
+});
+</script> 
+
+<?php echo Form::openMultipart(NULL,"class='general'") ; ?>
+
+          
+        <div id="charLeft2"></div>
+        <h2>Anuncia ya, Deja tu  ubicacion detalle y dato de contacto en 360 caracteres :)</h2>
+        <p>&nbsp;</p>
+<!--        <table width="300" border="0" align="center">
+          <tr>
+            <td width="148"><input name="opcion" type="radio" id="opcion_0" onClick="cambiar_opcion(this)" value="solo texto" checked="checked" />
+              Solo Texto</td>
+            <td width="136"><input type="radio" name="opcion" onClick="cambiar_opcion(this)" value="con imagen" id="opcion_1" />
+              Con Imagen</td>
+            <td width="136"><input type="radio" name="opcion" onClick="cambiar_opcion(this)" value="con video" id="opcion_2" />
+              Video youtube</td>
+          </tr>
+        </table>-->
+
+        
+          
+        
+        <table width="100%" border="0" cellspacing="2" cellpadding="2">
+          <tr>
+            <td width="50%" rowspan="2"><?php  echo Form::textarea('clasificados.nombre','class="textarea" maxlength="360"'); ?></td>
+            <td width="50%"><div class="campo"><?php echo Html::img('ciudad.png') ?>&nbsp;  Ciudad            
+                <?php echo Form::dbSelect('clasificados.ciudad_id', 'nombre',array('ciudades', 'find'), '-- seleccione Ciudad --','class="selecttextarea"') ?>&nbsp;<span>(Obligatorio)</span></div>
+                
+                <div class="campo"><?php echo Html::img('categoria1.png') ?>&nbsp;  Categoria            
+                <?php echo Form::hidden('clasificados.estatus',NULL, 1); ?>
+                <?php echo Form::hidden('clasificados.site',NULL, 'AV'); ?>
+                <?php echo Form::dbSelect('clasificados.categoria_id', 'nombre',array('categorias', 'find'), '-- seleccione categoria --','class="selecttextarea"') ?>&nbsp;<span>(Obligatorio)</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="campo"><?php echo Html::img('tiempo.png') ?>&nbsp;   Borrar Aviso despues de 
+                <?php echo Form::select('clasificados.fecha_baja', array('+1 month'=>'1 MES', '+2 month'=>'2 MESES', '+3 month'=>'3 MESES', '+6 month'=>'6 MESES'), array('class'=>'clases'), null); ?>&nbsp;<span>(Obligatorio)</span></div></td>
+          </tr>
+          <tr>
+            <td><h2><?php echo Html::img('recaptcha.png');?>&nbsp;Codigo AntiSpam</h2>&nbsp;<span>(Obligatorio)</span>
+                <?php 
+	Load::Lib("recaptcha"); // Cargamos la librería y le pedimos un código html
+	echo reCaptcha::html($previousError);?></td>
+            <td><div class="campo"><?php echo Html::img('email.png','sytle=width:"16px"'); ?>&nbsp;Email &nbsp; <?php echo Form::text('clasificados.email','class="text"'); ?>&nbsp;<span>(Obligatorio)</span></div>
+            <?php echo Form::submit('Publicar Anuncio','class="button"') ?></td>
+          </tr>
+        </table>
+        
+         
+
+        <div id="imagen">
+                        <?php echo Html::img('subir-imagen.png');?> Seleccione Imagen <?php echo Form::file('img'); ?>
+        </div>
+        
+        <div id="video">
+                        <?php echo Html::img('youtube.png') ?> Inserta la url  <?php echo Form::text('clasificados.video',"style='font-size: 18px; width:400px;'"); ?>
+        </div>
+        
+
+        <p>
+    <br>
+          
+    </p>
+        <p>&nbsp;</p>
+        <p style="text-align:left; color:#F00;">Nota: El aviso debe de tener algun tipo de datos de contacto ya sea email, sitio web, telefono o celular. Si no cumple con la normas el sistema lo eliminara.</p>
+      
+        <?php echo SecurityKey::generateKey(); ?>          
+        <?php echo form::close(); ?>

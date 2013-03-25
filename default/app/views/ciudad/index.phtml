@@ -1,0 +1,50 @@
+<?php View::content(); ?>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=289009071124610";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--Ciudad-->
+
+<table width="100%" border="0" align="center">
+<tr>
+   
+<!--tabla-->
+    <td width="18%" valign="top">   
+<!-- barra lateral izquierda nav   -->
+        <?php View::partial('portal/lateral') ?>
+    </td>  
+<!--fin barra lateral izquierda nav    -->
+
+    <td width="82%" valign="top">
+         <div id="br-info">Clasificados <?php echo $barrainfociudad ?>
+             <script type="text/javascript" src="http://apis.google.com/js/plusone.js">
+  {lang: 'es'}
+      </script>
+  <!-- Añade esta etiqueta donde quieras colocar el botón +1 -->
+  <g:plusone></g:plusone>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="avisoya" data-lang="es" data-size="large">Twittear</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+ <!--boton facebook-->
+<div class="fb-like" data-send="false" data-width="400" data-show-faces="false"></div>    
+</div>
+ <!--adsense-->
+               <?php View::partial('adsense/texto-imagen-728x90') ?>
+ <!--fin adsense-->
+
+
+<!--lista clasificados-->
+
+ <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"clasificados/$ciudad")) ?>
+
+
+<!--fin lista clasificados-->
+    </td>
+    </tr>
+</table>
+

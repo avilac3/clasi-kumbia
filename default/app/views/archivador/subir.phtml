@@ -1,0 +1,8 @@
+<?php View::content() ?>
+ 
+<h1>Subir Archivo</h1>
+ 
+<?php echo Form::openMultipart() ?>
+   <?php echo Form::file('archivo') ?>
+   <?php echo Form::submit('Subir') ?>
+<?php echo Form::close() ?>

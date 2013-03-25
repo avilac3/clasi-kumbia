@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta http-equiv='Content-type' content='text/html; charset=<?php echo APP_CHARSET ?>' />
+  <title>Panel de Administración</title>
+  <?php Tag::css('bienvenida') ?>
+  <?php Tag::css('style') ?>
+  <?php Tag::css('estilo') ?>
+  <?php Tag::css('estilo-admin') ?>
+  <?php Tag::css('scaffold') ?>
+
+
+  <?php echo Html::includeCss() ?>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans|Monoton' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id='content'>        
+        <?php View::partial('menuadmin') ?>
+      
+        <?php View::partial('portal/header') ?>
+        
+        <?php View::content(); ?>
+
+        <?php View::partial('portal/footer') ?>
+    </div>
+</body>
+</html>

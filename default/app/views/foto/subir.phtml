@@ -1,0 +1,22 @@
+ 
+<h1>Subir Foto</h1>
+ 
+
+<?php Tag::css('scaffold') ?>
+<div id="scaffold">       
+    <?php View::content(); ?>
+    <h1>Banner: <span>crear</span></h1>
+    <?php echo Form::openMultipart();?>
+    <div class="form-container">   
+        <?php echo Form::open(null, 'post', 'class="scaffold"') ?>
+        <label for="foto_titulo" class="required">Titulo <em>*</em></label> 
+        <?php echo Form::text('foto.titulo') ?>        
+        <label for="foto_descripcion" class="required">Descripción </label> 
+        <?php echo Form::text('foto.descripcion') ?> 
+        <label for="archivo" class="required">Adjuntar banner </label>         
+        <?php echo Form::file('archivo');?>                        
+        <?php echo Form::submit('subir');?>
+    <?php echo Form::close();?>
+    </div>
+</div>
+

@@ -1,0 +1,20 @@
+<?php Tag::css('scaffold') ?>
+<div id="scaffold">
+    <?php View::content(); ?>
+    <h1>Categoria: <span>crear</span></h1>
+    <?php echo Form::openMultipart(null, 'post', 'class="scaffold"') ?>
+    <br><label for="categorias_nombre" class="required">Nombre <em>*</em></label>
+    <?php echo Form::text('categorias.nombre') ?> 
+    
+    <br><label for="categorias_descripcion" class="required">Descripcion <em>*</em></label>
+    <?php echo Form::textarea('categorias.descripcion') ?> 
+    
+    <br><label for="categorias_img" class="required">Imagen <em>*</em></label>
+     <?php echo Form::file('archivo') ?>
+    
+    <?php echo Form::submit('Guardar');?>
+    <?php echo Form::close() ?>
+    <div class="actions">
+        <a href="../">Listado</a>
+    </div>
+</div>

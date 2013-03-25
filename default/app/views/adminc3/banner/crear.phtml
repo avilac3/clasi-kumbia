@@ -1,0 +1,31 @@
+<?php Tag::css('scaffold') ?>
+<div id="scaffold">       
+    <?php View::content(); ?>
+    <h1>Banner: <span>crear</span></h1>
+    <?php echo Form::openMultipart();?>
+    <div class="form-container">   
+        <?php echo Form::open(null, 'post', 'class="scaffold"') ?>
+        <label for="banners_titulo" class="required">Titulo <em>*</em></label> 
+        <?php echo Form::text('banners.titulo') ?>        
+        <label for="banners_descripcion" class="required">Descripción </label> 
+        <?php echo Form::text('banners.descripcion') ?> 
+        <label for="archivo" class="required">Adjuntar banner </label>         
+        <?php echo Form::file('archivo');?>                        
+        <?php echo Form::submit('Guardar');?>
+    <?php echo Form::close();?>
+    </div>
+</div>
+
+
+
+<?php $centro=array('lat'=>'-24.79', 'lng'=>'-65.41', 'zoom'=>'14');?>
+ 
+<?php $puntos=array(
+array('lat'=>'-24.79', 'lng'=>'-65.41'),
+array('lat'=>'-24.792', 'lng'=>'-65.416'),
+);?>
+ 
+<?php View::partial('maps/mapsSetPuntos', false, array('centro'=>$centro,'puntos'=>$puntos)); ?>
+
+
+<?php View::partial('maps/mapsSetPuntos', false, array('centro'=>$centro,'puntos'=>$puntos)); ?>

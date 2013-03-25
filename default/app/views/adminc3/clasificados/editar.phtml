@@ -1,0 +1,45 @@
+<?php View::content(); ?>
+<h3>Editar menu<h3>
+<div  id="scaffold"> 
+<?php echo Form::open(); // por defecto llama a la misma url ?>
+ 
+        <label>Nombre
+        <?php echo Form::text('clasificados.nombre') ?></label>
+ 
+        <label>Visitas
+        <?php echo Form::text('clasificados.visitas') ?></label>
+ 
+        <label>email
+        <?php echo Form::text('clasificados.email') ?></label>
+    
+        <label>ciudad_id
+        <?php echo Form::text('clasificados.ciudad_id') ?></label>
+        
+        <label>code codigosecurity
+        <?php echo Form::text('clasificados.codigosecurity') ?></label>
+ 
+        <label>site
+        <?php echo Form::text('clasificados.site') ?></label>
+        
+        <label>fecha_baja
+        <?php echo Form::text('clasificados.fecha_baja') ?></label>
+        <label>Categoria
+        <?php echo Form::dbSelect('clasificados.categoria_id', 'nombre',array('categorias', 'find'), '-- seleccione categoria --') ?></label>
+    
+        <label>Estatus
+    
+        <?php echo estatus::select('clasificados') ?></label>
+        
+        
+        <?php echo Form::hidden('clasificados.id') ?>
+        <?php echo Form::submit('Actualizar') ?>
+ 
+<?php echo Form::close() ?>
+    <div class="actions">
+        <?php echo Html::linkAction('', 'Listar') ?>
+    </div>
+</div>
+        
+        
+        
+     

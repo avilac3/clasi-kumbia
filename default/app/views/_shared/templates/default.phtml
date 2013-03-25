@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+ <head>
+  <meta http-equiv='Content-type' content='text/html; charset=<?php echo APP_CHARSET ?>' />
+  <meta name="Description" content="<?php echo $pageDescription ?>"/> 
+
+  <title><?php echo $pageTitle ?></title>
+  <?php Tag::css('bienvenida') ?>
+  <?php Tag::css('style') ?>
+  <?php Tag::css('scaffold') ?>
+  <?php Tag::css('estilo') ?>
+  
+  <?php echo Html::includeCss() ?>
+  
+  <?php echo Tag::js('jquery/jquery-1.7.1.min'); ?>
+  <?php echo Tag::js('jquery/jquery.maxlength-min');?>
+ 
+ </head>
+<body>
+        <?php View::partial('portal/header') ?>
+    <div style="width: 990px; margin:0px auto;">
+
+        <?php View::content(); ?>
+    </div>
+        <?php View::partial('portal/footer') ?>
+
+    </div>
+    
+    
+    
+    
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11364905-9']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

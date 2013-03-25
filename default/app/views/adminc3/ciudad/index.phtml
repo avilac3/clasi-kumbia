@@ -1,0 +1,33 @@
+
+<div id="scaffold">
+    
+    <?php if ($results->items) : ?>
+        <table>
+            <thead><tr>                    
+                    <th>Nombre</th>                    
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr></thead>
+            <tbody>
+            <?php foreach ($results->items as $result) : ?>
+                <tr>                                        
+                    <td><?php echo $result->nombre ?></td>
+                    <td><?php echo $result->descripcion ?></td>
+
+                    <td><?php echo Html::linkAction("editar/$result->id/", 'Editar') ?> |
+                    <?php echo Html::linkAction("borrar/$result->id/", 'Borrar') ?> |
+                </td>
+            </tr>
+            <?php endforeach ?>
+                </tbody>
+            </table>
+    
+    <?php View::partial('paginators/extended', false, array('page' => $results, 'url' => Router::get('controller_path') . '/index')); ?>
+
+    <?php else : // Si no hay items?>
+                        <h2>No hay ningún Ciudad Registrada</h2>
+    <?php endif ?>
+    <div class="actions">
+        <?php echo Html::linkAction("crear/", 'Crear registro') ?>
+    </div>
+</div>

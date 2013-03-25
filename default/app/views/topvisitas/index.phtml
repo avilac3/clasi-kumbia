@@ -1,0 +1,25 @@
+<!--Top Visitas-->
+
+<table width="100%" border="0" align="center">
+<tr>
+   
+<!--tabla-->
+    <td width="18%" valign="top">   
+<!-- barra lateral izquierda nav   -->
+        <?php View::partial('portal/lateral') ?>
+    </td>  
+<!--fin barra lateral izquierda nav    -->
+
+    <td width="82%" valign="top">
+      <div id="br-info">Los mas Visitados</div>
+
+<!--lista clasificados-->
+
+ <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"topvisitas")) ?>
+
+
+<!--fin lista clasificados-->
+    </td>
+    </tr>
+</table>
+

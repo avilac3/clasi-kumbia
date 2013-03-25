@@ -1,0 +1,38 @@
+<?php header('Content-Type: application/xml'); ?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>
+	<?php
+function dameURL(){
+$url="http://".$_SERVER['HTTP_HOST'];
+return $url;
+}
+
+echo dameURL(); // funcion para obtener nombre del dominio
+?>
+
+</loc>
+<changefreq>always</changefreq>
+<priority>1.0</priority>
+</url>
+    
+<?php $obtsitemap = Load::model('clasificados')->find_all_by_sql('SELECT * FROM clasificados WHERE clasificados.fecha_baja > CURRENT_DATE ORDER BY ID DESC LIMIT 0,200'); // consulta sql  ?>
+      <?php foreach ($obtsitemap as $item) : ?>
+  
+<url>
+<loc>
+    <?php echo dameURL();?>/clasificado/<?php echo $item->slug ?>/
+</loc>
+  
+<changefreq>always</changefreq>
+
+<priority>0.5</priority>
+</url>    
+
+      <?php endforeach; ?>
+
+    
+    </urlset>
+
+

@@ -1,0 +1,100 @@
+<?php View::content(); ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=289009071124610";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <table width="960px" border="0" align="center">
+<tr>
+   
+<!--tabla-->
+    <td width="180px" valign="top">   
+<!-- barra lateral izquierda nav   -->
+        <?php View::partial('portal/lateral') ?>
+    </td>  
+<!--fin barra lateral izquierda nav    -->
+<?php if($mostrar):?>    
+
+    <td width=780px" valign="top">
+   
+        
+                       <?php //View::partial('adsense/doble336x280') ?>
+
+<!--lista clasificados-->
+    <div class="compartir">compartelo
+   <!-- Añade esta etiqueta en la cabecera o delante de la etiqueta body. -->
+  
+  
+  <script type="text/javascript" src="http://apis.google.com/js/plusone.js">
+  {lang: 'es'}
+      </script>
+  <!-- Añade esta etiqueta donde quieras colocar el botón +1 -->
+  <g:plusone></g:plusone>
+  
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="avisoya" data-lang="es" data-hashtags="<?php echo $ciudad ?>,<?php echo $obtcate ?>">Twittear</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+   
+ <!--boton facebook-->
+<div class="fb-like" data-send="false" data-width="400" data-show-faces="false"></div>    
+    </div>
+
+<ul class="general">
+    <div class="categoria_clasi"><?php echo Html::img("$imgruta",''); ?></div>
+    <h2 style="color:#000;"><?php echo strip_tags($clasificado->nombre) ?> </h2>
+                        
+
+    
+</ul>
+
+
+
+<!-- cuadro imagen se muestra si hay imagen en el clasificado-->
+<?php  if (!empty($clasificado->img)){ 
+
+ echo "<div Class='barra-imagenes'>";
+ echo Html::link("img/upload/$clasificado->img",Html::img("upload/$clasificado->img",'',''),'target="_blank"');
+  echo Html::link("img/upload/$clasificado->img2",Html::img("upload/$clasificado->img2",'',''),'target="_blank"');
+   echo Html::link("img/upload/$clasificado->img3",Html::img("upload/$clasificado->img3",'',''),'target="_blank"'); 
+ 
+ 
+ echo "</div>";
+
+} 
+   ?>
+<!-- fin cuadro-->
+
+
+<div class="barra-info">
+
+<div class="barrainfoclasi">Visitas: <?php echo $clasificado->visitas ?></div> 
+<div class="barrainfoclasi">Categoria: <?php echo $obtcate ?></div>
+<div class="barrainfoclasi">Fecha: <?php echo $clasificado->fecha_baja ?></div>
+<div class="barrainfoclasi">Clasificados <?php echo $ciudad ?></div>
+</div>
+
+</div>
+<br>
+<div id="disqus_thread">
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'avisoya'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+Por favor Habilite el  JavaScript 
+</noscript>
+  </div>
+<!--fin lista clasificados-->
+<?php endif;?>
+    </td>
+    </tr>
+</table>

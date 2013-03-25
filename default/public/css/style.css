@@ -1,0 +1,67 @@
+/* Formatea los mensajes Flash::xxx() de KumbiaPHP */
+.flash {
+	border: 1px solid;
+        background-repeat: no-repeat;
+	background-position: 10px center;
+         -moz-border-radius:10px;
+        -khtml-border-radius:10px;
+        -webkit-border-radius:10px;
+        border-radius:10px;
+        font-size: 1.5em;
+        font-weight: bold;
+	margin: 1px 0;
+	min-height: 32px;
+	padding:5px 10px 5px 50px;
+	
+}
+
+.error {
+	color: #fafafa;
+	background-color: #c90202;
+	background-image: url('../img/default/error.png');
+}
+
+.info {
+	color: #00529B;
+	background-color: #BDE5F8;
+	background-image: url('../img/default/info.png');
+}
+
+.valid {
+	color: #fafafa;
+	background-color: #5ab15a;
+	background-image:url('../img/default/valid.png');
+}
+.warning {
+	color: #9F6000;
+	background-color: #FEEFB3;
+	background-image: url('../img/default/warning.png');
+}
+
+.highlight {
+	background: #FFFFDF;
+}
+
+div.autocomplete {
+	position: relative;
+	background-color: white;
+	border: 1px solid #888;
+	margin: 0;
+	padding: 0;
+}
+div.autocomplete ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+div.autocomplete ul li.selected {
+	background-color: #ffb;
+}
+div.autocomplete ul li {
+      list-style-type: none;
+      display: block;
+	  margin: 1px 0;
+      padding: 1px;
+      cursor: pointer;
+      font-size: 10px;
+}

@@ -1,0 +1,31 @@
+<nav>
+    <a href="http://www.concerebro.com" target="blank" ><? echo html::img('concerebro90x90.png','concerebro');?><br></a>
+
+    <?php echo Html::link('topvisitas/','Top Visitas'); ?><br>
+
+             <b>Categorias</b><br/>
+      
+             <ul>
+                 <?php
+                    $categorias = Load::model('categorias')->find();
+                    foreach ($categorias as $item) : 
+                    echo "<li>".Html::link("categoria/$item->nombre/",$item->nombre)."</li>";
+                     endforeach; 
+                 ?>
+             </ul>   
+         
+             <b>Ciudades</b><br/>
+     
+             <ul>
+                  <?php 
+                        $ciudades = Load::model('ciudades')->find();
+                        foreach ($ciudades as $itemc) : 
+                        echo "<li>".Html::link("clasificados/$itemc->nombre/",$itemc->nombre)."</li>";
+                        endforeach; 
+                  ?>
+             </ul>
+             <br>
+                            <?php //View::partial('adsense/160x600') ?>
+
+             </br>
+</nav>

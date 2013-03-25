@@ -5,23 +5,31 @@
   <meta name="Description" content="<?php echo $pageDescription ?>"/> 
 
   <title><?php echo $pageTitle ?></title>
-  <?php Tag::css('bienvenida') ?>
-  <?php Tag::css('style') ?>
-  <?php Tag::css('scaffold') ?>
-  <?php Tag::css('estilo') ?>
+     <?php Tag::css('bootstrap.min') ?>
+     <?php Tag::css('bootstrap-responsive') ?>
+     <?php Tag::css('font-awesome.min')?>
+     <?php Tag::css('base')?>  
+         
+         
+  <?php // Tag::css('bienvenida') ?>
+  <?php // Tag::css('style') ?>
+  <?php // Tag::css('scaffold') ?>
+  <?php // Tag::css('estilo') ?>
   
   <?php echo Html::includeCss() ?>
   
   <?php echo Tag::js('jquery/jquery-1.7.1.min'); ?>
   <?php echo Tag::js('jquery/jquery.maxlength-min');?>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="js/jquery-1.8.3.min.js"%3E%3C/script%3E'))</script>
+
  
  </head>
 <body>
         <?php View::partial('portal/header') ?>
-    <div style="width: 990px; margin:0px auto;">
 
         <?php View::content(); ?>
-    </div>
         <?php View::partial('portal/footer') ?>
 
     </div>

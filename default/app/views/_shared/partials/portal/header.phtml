@@ -1,52 +1,44 @@
-<div id="HEADER">
-  <div class="wrap">
-     
-    <div class="cse-branding-right" style="color:#000000; float:right; margin-right:30px;">
-      <div class="cse-branding-form">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="../"> <?php echo html::img('portal/logo2.png','','width="100"') ?> </a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+            <ul class="nav">
+              <li class="dropdown">
+                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">Action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">Another action</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                      </ul>
+              </li>
+              
+              <li class=""><a href="#">Top Anuncios</a></li>
+              <li><a href="#categorias">Categorias</a></li>
+              <li><a href="#ciudades">Ciudades</a></li>
+            </ul>
+
         
+            <ul class="nav pull-right">
+                <li><a href="#contact">Editar</a></li>
+                <li class="active"><a href="publicar">Publicar</a></li>
+            </ul>        
       </div>
-    </div>
-    
-      <div id="logo"><?php echo Html::link('', Html::img('logo.png','clasificados gratis avisoya.com',"style=' border: 0px ;'")) ;?></div>
-
-      <div class="bandera"><?php echo html::img('bde-colombia.png','clasificados colombia',"style='width: 50px ;height: 30px'") ?></div>
-
-
-    <div style="width:300px; padding-left:70px;">
-      <h1><?php echo html::link('','clasificados gratis faciles y rapidos') ?></h1>
+ 
     </div>
   </div>
-</div>
-<div class="barracolor">
-  <center>
-
-  <!--boton twitter-->
-
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  <!--fin boton twitter-->
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=289009071124610";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<script type="text/javascript">
-  window.___gcfg = {lang: 'es'};
-
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-
-
-    <div class="fb-like" data-href="http://www.avisoya.com/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false"></div><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.avisoya.com" data-via="avisoya" data-lang="es">Twittear</a><g:plusone size="small" href="http://www.avisoya.com/"></g:plusone>
-
-
-</center>
 </div>

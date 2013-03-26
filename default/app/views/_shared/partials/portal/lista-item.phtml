@@ -1,12 +1,38 @@
-<ul class="clasilista">
-    <?php foreach ($listClasificados->items as $item) : ?>
+<div class="row">
+   
+        <?php $i=0; $i2=0;
+    foreach ($listClasificados->items as $item) : ?>
+
+            <div class="span3 Entry" >
+              <span class="title" style="height:21px; overflow: hidden" ><?php echo $item->categoria ?></span>
+              <div class="sumario" style="max-height:64px; overflow:hidden"><?php echo $item->nombre ?> </div>
+              <div class="metadata">
+                  <a href="ver/<? echo $item->slug?>/" class="ico"><i class="icon-search icon-large"></i> <?php echo $item->slug ?></a>
+                  <a href="#myModal"  data-toggle="modal"class="ico"><i class="icon-search icon-large"></i></a>
+                  <a href="#" class="ico"><i class="icon-bookmark-empty icon-large"></i></a> 
+                  <a href="#" class="ico"><i class="icon-twitter-sign icon-large"></i></a>
+                  <a href="#" class="ico"><i class="icon-facebook-sign icon-large"></i></a>
+              </div>
+            </div><!--/span-->
     
-    <li>
-     <?php echo Html::img($item->ruta,'')  ?> 
-     <?php echo Html::link("clasificado/$item->slug/", substr(strip_tags($item->nombre),0,90)) ?>...
-     <div class="barrainfo">Ciudad&nbsp;<?php echo Html::link("ciudad/$item->ciudad/",$item->ciudad);?>&nbsp;--&nbsp;Categoria&nbsp; <?php echo Html::link("categoria/$item->categoria/",$item->categoria); ?> &nbsp;--&nbsp; Visitas &nbsp; <?php echo $item->visitas ?></div>
-    </li>
-    
+
+     <?php   if ($i == 3) { ?>
+            <div class="span3 Entry"> 
+                <span class="title" style="" ><?php echo $i; ?> </span>
+            </div>
+     
+     <?php } $i += 1; ?>
+
+            
+            
+     <?php   if ($i2 == 8) { ?>
+            <div class="span3 Entry"> 
+                <span class="title" style="" ><?php echo$i2; ?></span>
+            </div>
+     
+     <?php } $i2 += 1; ?>            
+            
+            
     <?php endforeach; ?>
     <br>
     <?php if(isset($url)) { ?>
@@ -16,7 +42,8 @@
     	<?php } else { ?>
     		<?php View::partial('paginators/classic', false, array('page' => $listClasificados )); ?>
     	<?php } ?>
-
     
-    <br>
-</ul>
+    
+    
+    
+</div>    

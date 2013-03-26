@@ -49,17 +49,13 @@ $(document).ready(function(){
    <?php View::content(); ?>
 
 
-<table width="100%" border="0" align="center">
-<tr>
    
-<!--tabla-->
-    <td width="18%" valign="top">   
+        
 <!-- barra lateral izquierda nav   -->
-        <?php View::partial('portal/lateral') ?>
-    </td>  
+        <?php // View::partial('portal/lateral') ?>
 <!--fin barra lateral izquierda nav    -->
 
-    <td width="82%" valign="top">
+<div class="row">
 <!--contenido-->
                <?php //View::partial('adsense/texto-imagen-728x90') ?>
 
@@ -73,13 +69,14 @@ $(document).ready(function(){
  
 <!--  Fin formulario publicar aviso   -->
 
+    <Center><h3>Clasificados Gratis Faciles y Rapidos</h3></center><br><br>
+
+
 
 <!--lista clasificados-->
  <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"pag")) ?>
 
 
 <!--fin lista clasificados-->
-    </td>
-    </tr>
-</table>
+</div>
     

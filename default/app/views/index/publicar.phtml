@@ -1,0 +1,20 @@
+<div class="barra"><a href="./" class="ico"><i class="icon-reply icon-2x"></i></a></div>
+<hr>
+<?php echo View::content(); ?>
+<div class="container">
+    <?php echo Form::open () ?>
+    <?php echo Form::hidden('clasificados.estatus',NULL, 1); ?>
+    <?php echo Form::hidden('clasificados.codigosecurity',NULL, 1); ?>
+    <?php echo Form::hidden('clasificados.site',NULL, 'AV'); ?>
+    
+    <?php echo Form::dbSelect('clasificados.idcategoria_FK', 'nombre',array('categorias', 'find'), '-- seleccione categoria --','class="input-block-level" required') ?>
+    <?php echo Form::dbSelect('clasificados.idciudad_FK', 'nombre',array('ciudades', 'find'), '-- seleccione Ciudad --','class="input-block-level" required') ?>
+    <?php  echo Form::textarea('clasificados.nombre','class="input-block-level"  placeholder="Descripcion del anuncio…"rows="6" required'); ?>
+    <?php echo Form::text('clasificados.email','class="input-block-level" placeholder="Email..."  required','') ?>       
+
+<div class="form-actions">
+  <button type="submit" class="btn btn-primary">Publicar Anuncio</button>
+</div>
+        
+     <?php echo Form::close() ?>   
+</div

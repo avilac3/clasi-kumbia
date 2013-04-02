@@ -189,9 +189,29 @@ public function ultimos($limit=30) {
     
  
  //    Obtener clasiciados con fecha_baja mayor que
+        
+        
+         public function getInnerJoinClasificados($page=1, $ppage=20)
+    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre, clasificados.estatus, clasificados.visitas, categorias.ruta, clasificados.fecha_at, clasificados.fecha_baja, categorias.nombre as categoria, ciudades.nombre as ciudad 
+        FROM clasificados
+            INNER JOIN categorias 
+            on clasificados.idcategoria_FK = categorias.id
+            
+            INNER JOIN ciudades
+            on clasificados.idciudad_FK = ciudades.id
+            
+            Where clasificados.estatus = 1 AND clasificados.site = 'AV'
+            ORDER BY clasificados.id DESC";
+    
+    return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
+    }     
+      
+         
+    
+         
     
             
-        public function getInnerJoinClasificados($page=1, $ppage=20)
+        public function getInnerJoinClasificados_1($page=1, $ppage=20)
     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre, clasificados.estatus, clasificados.visitas, categorias.ruta, clasificados.fecha_at, clasificados.fecha_baja, categorias.nombre as categoria, ciudades.nombre as ciudad 
         FROM clasificados
             INNER JOIN categorias 
@@ -210,20 +230,38 @@ public function ultimos($limit=30) {
   //    Obtener clasiciados con SLUG   y  fecha_baja mayor que
             
         public function getInnerJoinClasificadosslug($slug)
-     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre as minombre, clasificados.estatus, clasificados.visitas, clasificados.fecha_baja,  categorias.ruta as imgruta, categorias.nombre as categoria, clasificados.ciudad_id, ciudades.nombre as ciudad
+     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre as minombre, clasificados.estatus, clasificados.visitas, clasificados.fecha_baja,  categorias.ruta as imgruta, categorias.nombre as categoria, clasificados.idciudad_FK, ciudades.nombre as ciudad
             FROM clasificados
             INNER JOIN categorias 
-            on clasificados.categoria_id = categorias.id
+            on clasificados.idcategoria_FK = categorias.id
             
             INNER JOIN ciudades
-            on clasificados.ciudad_id = ciudades.id
-            WHERE clasificados.fecha_baja > CURRENT_DATE AND clasificados.slug = '$slug' AND clasificados.site = 'AV' ";
-    
+            on clasificados.idciudad_FK = ciudades.id
+            Where clasificados.estatus = 1 AND clasificados.site = 'AV'";    
     return $this->find_by_sql($sql);     
     }
+    
+
+    
+        public function getclasificado($page=1, $ppage=20)
+    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre, clasificados.estatus, clasificados.visitas, categorias.ruta, clasificados.fecha_at, clasificados.fecha_baja, categorias.nombre as categoria, ciudades.nombre as ciudad 
+        FROM clasificados
+            INNER JOIN categorias 
+            on clasificados.idcategoria_FK = categorias.id
+            
+            INNER JOIN ciudades
+            on clasificados.idciudad_FK = ciudades.id
+            
+            Where clasificados.estatus = 1 AND clasificados.site = 'AV'
+            ORDER BY clasificados.id DESC";
+    
+    return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
+    }     
       
+        
     
     
+     
 //    Obtener Top visitas
     
     public function getInnerJoinTopvisitas($page=1, $ppage=20)

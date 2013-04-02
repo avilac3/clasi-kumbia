@@ -1,13 +1,12 @@
 <div class="row">
    
-        <?php $i=0; $i2=0;
-    foreach ($listClasificados->items as $item) : ?>
+        <?php $i=0; $i2=0; foreach ($listClasificados->items as $item) : ?>
 
             <div class="span3 Entry" >
               <span class="title" style="height:21px; overflow: hidden" ><?php echo $item->categoria ?></span>
               <div class="sumario" style="max-height:64px; overflow:hidden"><?php echo $item->nombre ?> </div>
               <div class="metadata">
-                  <a href="ver/<? echo $item->slug?>/" class="ico"><i class="icon-search icon-large"></i> <?php echo $item->slug ?></a>
+                  <a href="clasificado/<? echo $item->slug?>/" class="ico"><i class="icon-search icon-large"></i> <?php echo $item->slug ?></a>
                   <a href="#myModal"  data-toggle="modal"class="ico"><i class="icon-search icon-large"></i></a>
                   <a href="#" class="ico"><i class="icon-bookmark-empty icon-large"></i></a> 
                   <a href="#" class="ico"><i class="icon-twitter-sign icon-large"></i></a>
@@ -47,3 +46,5 @@
     
     
 </div>    
+
+

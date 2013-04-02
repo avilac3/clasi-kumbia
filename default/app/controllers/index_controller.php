@@ -122,6 +122,7 @@ $clasificado = new Clasificados();
     $this->imgruta = $clasificado->imgruta;   //ruta imagen
     $this->obtcate = $clasificado->categoria; //categoria actual
     $this->ciudad = $clasificado->ciudad;     //ciudad
+    $this->estatus = $clasificado->estatus;     //ciudad
   
 //    etiqueta title y description SEO 
     $this->pageTitle = substr(strip_tags($clasificado->minombre),0,90);
@@ -130,9 +131,9 @@ $clasificado = new Clasificados();
      
 //     condicion para no mostrar los registros caducados por fecha o estatus
 
-          $this->mostrar = strtotime($fechab) > time();
+          $this->mostrar = $estatus;
 
-    if(!$this->mostrar)         
+    if(!$this->mostrar = 1)         
      {
          
          Flash ::error("Aviso no Disponible");
@@ -158,6 +159,33 @@ $clasificado = new Clasificados();
 
 
     }
+    
+    
+    
+    /*
+     * Método para agregar
+     */
+    
+    public function publicar()
+    {
+        $this->title="Publica anuncio gratis";
+        if(Input::hasPost('clasificados')){
+            
+           $clasificado = new Clasificados(Input::post('clasificados'));
+           //En caso que falle la operación de guardar
+           if(!$clasificado->save()){
+               Flash::error('Falló Operación');
+           }else{
+               Flash::valid('Operación exitosa');
+               //Eliminamos el POST, si no queremos que se vean en el form
+               redirect::toAction('./');
+           }            
+            
+        }
+        
+        
+    }
+        
     
     
     

@@ -16,20 +16,35 @@
       <div class="nav-collapse collapse">
         <!-- .nav, .navbar-search, .navbar-form, etc -->
             <ul class="nav">
+
+              <li><?php echo Html::link('topvisitas/','Top Anuncios'); ?></li>
+              
               <li class="dropdown">
-                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://google.com">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#anotherAction">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                      </ul>
+                      <a id="categoria" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Categoria <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="categoria">
+                      <?php
+                      $categorias = Load::model('categorias')->find();
+                      foreach ($categorias as $item) : 
+                          echo "<li>".Html::link("categoria/$item->nombre/",$item->nombre)."</li>";
+                      endforeach;
+                      ?>
+                  </ul> 
               </li>
               
-              <li class=""><a href="#">Top Anuncios</a></li>
-              <li><a href="#categorias">Categorias</a></li>
-              <li><a href="#ciudades">Ciudades</a></li>
+              <li class="dropdown">
+                  <a id="categoria" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Ciudad <b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="ciudad">
+
+                  <?php 
+                        $ciudades = Load::model('ciudades')->find();
+                        foreach ($ciudades as $itemc) : 
+                        echo "<li>".Html::link("clasificados/$itemc->nombre/",$itemc->nombre)."</li>";
+                        endforeach; 
+                  ?>
+                  </ul>
+              </li>
+
+                  
             </ul>
 
         

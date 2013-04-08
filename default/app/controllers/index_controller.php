@@ -101,9 +101,19 @@ $obj->Send();
     
     }
 
-         
-        
-        
+public function random(){
+Load::models('clasificados');
+    
+ $clasificado = new Clasificados();
+ $clasificado->getclasificadorandom();   //Codigo random
+
+ return Router::redirect("clasificado/$clasificado->slug/");
+
+    
+}
+
+
+
     
     
     

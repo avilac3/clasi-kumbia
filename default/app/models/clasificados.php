@@ -241,22 +241,20 @@ public function ultimos($limit=30) {
     return $this->find_by_sql($sql);     
     }
     
-
+  //    Obtener clasiciado Random
     
-        public function getclasificado($page=1, $ppage=20)
-    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre, clasificados.estatus, clasificados.visitas, categorias.ruta, clasificados.fecha_at, clasificados.fecha_baja, categorias.nombre as categoria, ciudades.nombre as ciudad 
-        FROM clasificados
+        public function getclasificadorandom()
+       {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre as minombre, clasificados.estatus, clasificados.visitas, clasificados.fecha_baja,  categorias.ruta as imgruta, categorias.nombre as categoria, clasificados.idciudad_FK, ciudades.nombre as ciudad
+            FROM clasificados
             INNER JOIN categorias 
             on clasificados.idcategoria_FK = categorias.id
             
             INNER JOIN ciudades
             on clasificados.idciudad_FK = ciudades.id
-            
             Where clasificados.estatus = 1 AND clasificados.site = 'AV'
-            ORDER BY clasificados.id DESC";
-    
-    return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
-    }     
+            ORDER BY rand() LIMIT 1";    
+    return $this->find_by_sql($sql);     
+    }
       
         
     

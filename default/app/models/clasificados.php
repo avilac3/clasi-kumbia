@@ -237,7 +237,7 @@ public function ultimos($limit=30) {
             
             INNER JOIN ciudades
             on clasificados.idciudad_FK = ciudades.id
-            Where clasificados.estatus = 1 AND clasificados.site = 'AV'";    
+            Where clasificados.slug = '$slug' AND clasificados.estatus = 1 AND clasificados.site = 'AV'";    
     return $this->find_by_sql($sql);     
     }
     
@@ -268,11 +268,12 @@ public function ultimos($limit=30) {
     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre, clasificados.fecha_baja, clasificados.estatus, clasificados.visitas, categorias.ruta, categorias.nombre as categoria, ciudades.nombre as ciudad
             FROM clasificados
             INNER JOIN categorias 
-            on clasificados.categoria_id = categorias.id
+            on clasificados.idcategoria_FK = categorias.id
             
             INNER JOIN ciudades
-            on clasificados.ciudad_id = ciudades.id
-            WHERE clasificados.fecha_baja > CURRENT_DATE AND clasificados.site = 'AV'
+            on clasificados.idciudad_FK = ciudades.id
+            
+            Where clasificados.estatus = 1 AND clasificados.site = 'AV'
             ORDER BY clasificados.visitas DESC ";
     
     return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
@@ -284,12 +285,12 @@ public function ultimos($limit=30) {
     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre, clasificados.estatus, clasificados.visitas, clasificados.fecha_baja,  categorias.ruta, categorias.nombre as categoria, ciudades.nombre as ciudad 
             FROM clasificados
             INNER JOIN categorias 
-            on clasificados.categoria_id = categorias.id
+            on clasificados.idcategoria_FK = categorias.id
             
             INNER JOIN ciudades
-            on clasificados.ciudad_id = ciudades.id
+            on clasificados.idciudad_FK = ciudades.id
         
-            WHERE ciudades.nombre='$ciudad' and clasificados.fecha_baja > CURRENT_DATE AND clasificados.site = 'AV'
+            WHERE ciudades.nombre='$ciudad' and clasificados.estatus = 1 AND clasificados.site = 'AV'
             ORDER BY clasificados.id DESC ";
     
     return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
@@ -304,12 +305,12 @@ public function ultimos($limit=30) {
     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.nombre, clasificados.estatus, clasificados.visitas,  categorias.ruta, clasificados.fecha_baja, categorias.nombre as categoria, ciudades.nombre as ciudad
             FROM clasificados
             INNER JOIN categorias 
-            on clasificados.categoria_id = categorias.id
+            on clasificados.idcategoria_FK = categorias.id
             
             INNER JOIN ciudades
-            on clasificados.ciudad_id = ciudades.id
+            on clasificados.idciudad_FK = ciudades.id
             
-            WHERE categorias.nombre = '$categoria'  and clasificados.fecha_baja > CURRENT_DATE AND clasificados.site = 'AV' ";
+            WHERE categorias.nombre = '$categoria'  and clasificados.estatus = 1 AND clasificados.site = 'AV' ";
     
     return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
     }  

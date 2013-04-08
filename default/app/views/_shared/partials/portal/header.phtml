@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </a>
  
-      <!-- Be sure to leave the brand out there if you want it shown -->
+      <!-- Be sure to leave the brand out there if you want it shown <i class="icon-bullhorn icon-4x"></i> -->
       <? echo html::link("", html::img('portal/logo2.png','','width="100"'), 'class="brand"') ?>
  
       <!-- Everything you want hidden at 940px or less, place within here -->
@@ -17,10 +17,10 @@
         <!-- .nav, .navbar-search, .navbar-form, etc -->
             <ul class="nav">
 
-              <li><?php echo Html::link('topvisitas/','Top Anuncios'); ?></li>
+              <li><?php echo Html::link('topvisitas/','<i class="icon-thumbs-up"></i>Top Anuncios'); ?></li>
               
               <li class="dropdown">
-                      <a id="categoria" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Categoria <b class="caret"></b></a>
+                  <a id="categoria" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th-list"></i>Categorias <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="categoria">
                       <?php
                       $categorias = Load::model('categorias')->find();
@@ -32,7 +32,7 @@
               </li>
               
               <li class="dropdown">
-                  <a id="categoria" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Ciudad <b class="caret"></b></a>
+                  <a id="categoria" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-building"></i>Ciudades <b class="caret"></b></a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="ciudad">
 
                   <?php 
@@ -49,8 +49,9 @@
 
         
             <ul class="nav pull-right">
-                <li><a href="#contact">Editar</a></li>
-                <li class="active"><a href="publicar">Publicar</a></li>
+                <li><a href="#"><i class="icon-random"></i></a></li>
+                <li><a href="#contact"><i class="icon-edit"></i>Editar</a></li>
+                <li class="active"><a href="#myModal" data-toggle="modal"><i class="icon-magic"></i>Publicar</a></li>
             </ul>        
       </div>
  

@@ -1,22 +1,8 @@
 <!--Categorias-->
+<div class="container" style="margin-top: 5%">
+    <div class="row">
 
-<table width="100%" border="0" align="center">
-<tr>
-   
-<!--tabla-->
-    <td width="18%" valign="top">   
-<!-- barra lateral izquierda nav   -->
-        <?php View::partial('portal/lateral') ?>
-    </td>  
-<!--fin barra lateral izquierda nav    -->
-
-    <td width="82%" valign="top">
-   <div id="br-info">Categoria <?php echo $barrainfocate ?></div>
-
-<!--adsense-->
- <?php View::partial('adsense/doble336x280') ?>
-<!--fin adsense-->
-
+        <h3>Categoria <?php echo $barrainfocate ?></h3><hr>
 
 <!--lista clasificados-->
 
@@ -24,7 +10,6 @@
 
 <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"categoria/$categoria")) ?>
 <!--fin lista clasificados-->
-    </td>
-    </tr>
-</table>
 
+    </div>
+</div>

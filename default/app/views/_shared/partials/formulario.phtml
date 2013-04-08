@@ -17,9 +17,9 @@ $(document).ready(function(){
 
 
 
-<div class="barra"><a href="./" class="ico"><i class="icon-reply icon-2x"></i></a></div>
+<div class="barra"><a data-dismiss="modal" aria-hidden="true" class="ico"><i class="icon-reply icon-2x"></i></a></div>
 <hr>
-<div class="container">
+<div class="">
     <?php echo Form::openMultipart(NULL,"class='general'") ; ?>
     <?php echo Form::hidden('clasificados.estatus',NULL, 1); ?>
     <?php echo Form::hidden('clasificados.codigosecurity',NULL, 1); ?>

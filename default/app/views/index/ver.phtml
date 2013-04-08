@@ -9,13 +9,19 @@
   js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=289009071124610";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    <table width="960px" border="0" align="center">
+   
+
+<div class="row">
+
+<table width="960px" border="0" align="center">
 <tr>
    
 <!--tabla-->
     <td width="180px" valign="top">   
 <!-- barra lateral izquierda nav   -->
-        <?php View::partial('portal/lateral') ?>
+        <?php //View::partial('portal/lateral') ?>
+        <?php View::partial('adsense/160x600') ?>
+
     </td>  
 <!--fin barra lateral izquierda nav    -->
 <?php if($mostrar):?>    
@@ -44,7 +50,7 @@
     </div>
 
 <ul class="general">
-    <div class="categoria_clasi"><?php echo Html::img("$imgruta",''); ?></div>
+    <div class="categoria_clasi"><?php //echo Html::img("$imgruta",''); ?></div>
     <h2 style="color:#000;"><?php echo strip_tags($clasificado->nombre) ?> </h2>
                         
 
@@ -100,3 +106,4 @@ Por favor Habilite el  JavaScript
     </td>
     </tr>
 </table>
+</div>

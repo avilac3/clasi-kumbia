@@ -1,3 +1,13 @@
+
+<script type="text/javascript">
+    var RecaptchaOptions = {
+   lang: 'es',
+   theme : 'clean'  // [ red, white, blackglass, clean, custom ]
+  };
+</script>
+
+
+
 <!--para el textarea-->
 <script type="text/javascript">
 $(document).ready(function(){    
@@ -16,9 +26,13 @@ $(document).ready(function(){
 </script> 
 
 
-<div class="barra"><a data-dismiss="modal" aria-hidden="true" class="ico"><i class="icon-reply icon-2x"></i></a></div>
+<div class="barra"><a data-dismiss="modal" aria-hidden="true" class="ico"><i class="icon-reply icon-2x" style="margin-top: 60px;"></i></a></div>
 <hr>
 <div class="container">
+   <?php View::content(); ?>
+
+
+  
     <?php echo Form::openMultipart(NULL,"class='general'") ; ?>
     <?php echo Form::hidden('clasificados.estatus',NULL, 1); ?>
     <?php echo Form::hidden('clasificados.codigosecurity',NULL, 1); ?>

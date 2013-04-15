@@ -7,14 +7,14 @@
 ini_set('display_errors', 'Off');
 
 Load::Lib("recaptcha");
+Load::model('clasificados');
 
 class IndexController extends AppController    {
     
 
     
 //        obtiene una lista para paginar
-        public function index($page=1) 
-    {
+        public function index($page=1) {
 //    etiqueta title y description  
     $this->pageTitle = 'clasificados gratis  avisoya  Clasificados colombia';
     $this->pageDescription = 'encuentra casas, automoviles, empleos y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';
@@ -91,15 +91,94 @@ $obj->Send();
     }  
          
 }
+   
+    
+    }
+    
+    
+    
+// PUBLICAR CLASIFICADO     
+    
+
+public function publicar($page=1) {
+//    etiqueta title y description  
+    $this->pageTitle = 'publica tu clasificado gratis';
+    $this->pageDescription = 'publica gratis tu casa, automovil, empleo y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';
+
+
+ 
+//Hago save a mi aviso con llave de seguridad 
+$this->previousError = "";
+if(Input::hasPost('clasificados')){   
+    if(SecurityKey::isValid()) {
+       if (Input::hasPost('recaptcha_response_field')){
+            // Realizamos la comprobacion
+            $ret = reCaptcha::validate();
+            if ($ret->is_valid) {
+//                $this->Clasificados = Input::post('clasificados');                      
+             $clasificado = new Clasificados();              
+            if($clasificado->guardar(Input::post('clasificados'))){
+
+
+                Flash::success('Operación exitosa');
+                Input::delete();
 
 
 
 
-     
+$post = Input::post('clasificados');
+
+$email = $post['email'];
+
+
+//var_dump($email); 
+
+
+//envio email phpmailer avilac3
+/*
+Load::lib('PHPMailer/class.phpmailer');
+$obj = new PHPMailer();
+$obj->IsSMTP();          // Habilitamos el uso de SMTP
+$obj->SMTPAuth   = true;          // Habilitamos la autenticación SMTP
+$obj->Host       = "mail.avisoya.com";          // Nombre del servidor SMTP
+$obj->Port       = 25;          // Puerto del SMTP
+$obj->Username   = "info@avisoya.com";          // Cuenta de usuario del SMTP
+$obj->Password   = "carlos";            // Clave del usuario SMTP
+$obj->AddAddress( "".$clasificado->email."","Titulo del destinatario");
+
+$obj->SetFrom("info@avisoya.com", 'avisoya');
+$obj->Subject = "Felicidades por tu nuevo aviso";
+$body = '<img src="http://www.avisoya.com/img/logo.png"><br></br>
+        <a href="http://www.avisoya.com/clasificado/'.$clasificado->slug.'/">Click Aqui Clasificado</a>  '.$clasificado->email.' ';
+$obj->MsgHTML($body);
+$obj->Send();
+
+
+// finenvio email phpmailer avilac3
+*/
+                return Router::redirect("clasificado/$clasificado->slug/");
+
+              }else{ 
+                  Flash::error($clasificado->error);                                                                             
+              }
+            }
+            // Enviamos el error a la vista
+            $this->previousError = $ret->error;
+            Flash::error('Codigo AntiSpam proporcionado no es el correcto. por favor, inténtelo de nuevo.');
+        }else{
+                        //si no se ha enviando el captcha declaramas la variable a NULL
+                        $this->previousError = NULL;
+        }
+    }  
+         
+}
+   
+    
+    }
    
     
     
-    }
+    
 
 public function random(){
 Load::models('clasificados');
@@ -171,106 +250,7 @@ $clasificado = new Clasificados();
     }
     
     
-    
-    /*
-     * Método para agregar
-     */
-    
-    public function publicar()
-    {
-        
-
-//    etiqueta title y description  
-    $this->pageTitle = 'publica tu clasificado gratis';
-    $this->pageDescription = 'publica gratis tu casa, automovil, empleo y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';
-
-        
-        if(Input::hasPost('clasificados')){
-            
-
-//Hago save a mi aviso con llave de seguridad 
-$this->previousError = "";
-if(Input::hasPost('clasificados')){   
-    if(SecurityKey::isValid()) {
-       if (Input::hasPost('recaptcha_response_field')){
-            // Realizamos la comprobacion
-            $ret = reCaptcha::validate();
-            if ($ret->is_valid) {
-//                $this->Clasificados = Input::post('clasificados');                      
-             $clasificado = new Clasificados();              
-            if($clasificado->guardar(Input::post('clasificados'))){
-
-
-                Flash::success('Operación exitosa');
-                Input::delete();
-
-
-
-
-$post = Input::post('clasificados');
-
-$email = $post['email'];
-
-
-//var_dump($email); 
-
-
-//envio email phpmailer avilac3
-/*
-Load::lib('PHPMailer/class.phpmailer');
-$obj = new PHPMailer();
-$obj->IsSMTP();          // Habilitamos el uso de SMTP
-$obj->SMTPAuth   = true;          // Habilitamos la autenticación SMTP
-$obj->Host       = "mail.avisoya.com";          // Nombre del servidor SMTP
-$obj->Port       = 25;          // Puerto del SMTP
-$obj->Username   = "info@avisoya.com";          // Cuenta de usuario del SMTP
-$obj->Password   = "carlos";            // Clave del usuario SMTP
-$obj->AddAddress( "".$clasificado->email."","Titulo del destinatario");
-
-$obj->SetFrom("info@avisoya.com", 'avisoya');
-$obj->Subject = "Felicidades por tu nuevo aviso";
-$body = '<img src="http://www.avisoya.com/img/logo.png"><br></br>
-        <a href="http://www.avisoya.com/clasificado/'.$clasificado->slug.'/">Click Aqui Clasificado</a>  '.$clasificado->email.' ';
-$obj->MsgHTML($body);
-$obj->Send();
-
-
-// finenvio email phpmailer avilac3
-*/
-                return Router::redirect("clasificado/$clasificado->slug/");
-
-              }else{ 
-                  Flash::error($clasificado->error);                                                                             
-              }
-            }
-            // Enviamos el error a la vista
-            $this->previousError = $ret->error;
-            Flash::error('Codigo AntiSpam proporcionado no es el correcto. por favor, inténtelo de nuevo.');
-        }else{
-                        //si no se ha enviando el captcha declaramas la variable a NULL
-                        $this->previousError = NULL;
-        }
-    }  
-         
-}
-
-
-
-
-     
-   
-            
-            
-            
-            
-            
-        }
-        
-        
-    }
-        
-    
-    
+       
     
     
 }

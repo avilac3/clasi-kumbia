@@ -1,24 +1,4 @@
- <script type="text/javascript">
-function cambiar_opcion(combo){
-    if(combo.value=='solo texto'){
-     document.getElementById('imagen').style.display = 'none';
-     document.getElementById('video').style.display = 'none';}
 
-    else if(combo.value=='con imagen'){
-     document.getElementById('imagen').style.display = 'block';
-     document.getElementById('video').style.display = 'none';
-    }
-    if(combo.value=='con video'){
-     document.getElementById('video').style.display = 'block';
-     document.getElementById('imagen').style.display = 'none';
-
-    }
-
-
-
-    }
-    </script>
- 
 <script type="text/javascript">
     var RecaptchaOptions = {
    lang: 'es',
@@ -26,20 +6,6 @@ function cambiar_opcion(combo){
   };
 </script>
 
-<script type="text/javascript">
- 
-$(document).ready(function(){
- 
-        $(".slidingDiv").hide();
-        $(".show_hide").show();
- 
-    $('.show_hide').click(function(){
-    $(".slidingDiv").slideToggle();
-    });
- 
-});
- 
-</script>
 
 <div class="container" style="margin-top: 8%">
 
@@ -94,7 +60,8 @@ $(document).ready(function(){
 <!--lista clasificados-->
  <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"pag")) ?>
 
-
 <!--fin lista clasificados-->
+</div>
+
 </div>
     

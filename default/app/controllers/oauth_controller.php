@@ -38,7 +38,8 @@ class OAuthController extends AppController{
  
 		/* Create a TwitterOauth object with consumer/user tokens. */
 		$connection = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
- 
+            // para publicar tweet    $connection->post('statuses/update', array('status' => 'here the content of your tweet, you can add hashtags or links'));
+
 		/* Get credentials to test API access */
 		/* $credentials = $connection->get('account/verify_credentials'); */
 		$this->credentials = $connection->get('account/verify_credentials');
@@ -80,7 +81,12 @@ class OAuthController extends AppController{
 	}
  
 	public function _register() {
-		view::template(NULL);
+            
+            //    etiqueta title y description  
+    $this->pageTitle = 'publica tu clasificado gratis con twitter';
+    $this->pageDescription = 'publica gratis tu casa, automovil, empleo y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';
+
+
 
 		session_start();
 		session_destroy();
@@ -97,7 +103,6 @@ class OAuthController extends AppController{
  
 	public function _callback() 
 	{
-		view::template(NULL);
 
 		session_start();
  
@@ -124,7 +129,7 @@ class OAuthController extends AppController{
 		if (200 == $connection->http_code) {
 			/* The user has been verified and the access tokens can be saved for future use */
 			$_SESSION['status'] = 'verified';
-			header('Location: http://localhost/clasi-kumbia/oauth/index/');
+			header('Location: http://localhost/clasi-kumbia/publicar/');
 		} else {
 			/* Save HTTP status for error dialog on connnect page.*/
 			header('Location: http://localhost/clasi-kumbia/oauth/_register/');

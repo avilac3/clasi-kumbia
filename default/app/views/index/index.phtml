@@ -6,62 +6,47 @@
   };
 </script>
 
-
-<div class="container" style="margin-top: 8%">
-
+    <?php View::content(); ?>
 
 
+<div class="row-fluid">
+    <div class="span8 caja">
+        <div class="well well-small"><span class="lead">Clasificados Gratis Faciles y Rapidos</span></div>
 
-   <?php View::content(); ?>
-
-
-   
-        
-<!-- barra lateral izquierda nav   -->
-        <?php // View::partial('portal/lateral') ?>
-<!--fin barra lateral izquierda nav    -->
-
-<div class="row">
-<!--contenido-->
-               <?php //View::partial('adsense/texto-imagen-728x90') ?>
-
-
-<!-- Button to trigger modal -->
- 
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  </div>
-  <div class="modal-body">
-      
-      <!-- formulario publicar aviso   -->
-<?php View::partial('formulario', FALSE, array('previousError' => $previousError)) ?>
-           
- 
-<!--  Fin formulario publicar aviso   -->
-
-      
-      
-      
-      
-  </div>
-
-</div>
-
-
-
-
-
-    <Center><h3>Clasificados Gratis Faciles y Rapidos</h3></center><br><br>
-
-
-
-<!--lista clasificados-->
+    <!--lista clasificados-->
  <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"pag")) ?>
-
 <!--fin lista clasificados-->
-</div>
+    </div>
+    <div class="span4 caja">
+                <div class="well well-small">
+                    <span class="lead">Gratis Faciles y Rapidos</span>
+                </div>
+
+                    
+                    <hr><h4>Categorias</h4><hr>
+             <div style="width:100%; float:left; margin: 10px;">
+                        <?php $categorias = Load::model('categorias')->find("order: rand()"); foreach ($categorias as $item) : ?>
+
+                     <div class='caja_categoria'> <?php echo Html::link("categoria/$item->nombre/",$item->nombre) ?></div>
+                     <?php endforeach; ?>
+
+             </div> 
+                           <div style="width:100%; float:left; margin-bottom: 15px;">
+      
+                    <hr><h4>Ciudades</h4><hr>
+             <ul>
+                  <?php $ciudades = Load::model('ciudades')->find("order: rand()");
+                        foreach ($ciudades as $itemc) : ?>
+                 
+                        <div class='caja_categoria'> <?php echo Html::link("clasificados/$itemc->nombre/",$itemc->nombre)?></div>
+                       <?php  endforeach; ?>
+                           </div>
+                        <?php echo html::img('avisotes.png','') ?>
+                        <?php echo html::img('avisotes.png','') ?>
+
+    </div>
+
 
 </div>
+
     

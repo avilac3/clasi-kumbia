@@ -5,44 +5,38 @@
   <meta name="Description" content="<?php echo $pageDescription ?>"/> 
 
   <title><?php echo $pageTitle ?></title>
-     <?php Tag::css('bootstrap.min') ?>
-     <?php Tag::css('bootstrap-responsive') ?>
+     <?php Tag::css('b231/bootstrap') ?>
+     <?php Tag::css('b231/bootstrap-responsive') ?>
      <?php Tag::css('font-awesome.min')?>
-     <?php Tag::css('base')?>  
+     <?php Tag::css('b231/style')?>  
+     <?php //Tag::css('base')?>  
          
          
   <?php // Tag::css('bienvenida') ?>
-  <?php  Tag::css('style') ?>
+  <?php Tag::css('style') ?>
   <?php // Tag::css('scaffold') ?>
   <?php // Tag::css('estilo') ?>
   
   <?php echo Html::includeCss() ?>
   
-  <?php echo Tag::js('jquery/jquery.maxlength-min');?>
+  <?php // echo Tag::js('jquery/jquery.maxlength-min');?>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="js/jquery-1.8.3.min.js"%3E%3C/script%3E'))</script>
 
  
  </head>
-<body>
+ <body><div class="container-980">
         <?php View::partial('portal/header') ?>
 
         <?php View::content(); ?>
 
-        <?php // View::partial('portal/footer') ?>
-    
+        <?php View::partial('portal/footer') ?>
+     </div>
     
 
 </body>
     <?php echo  Tag::js('bootstrap')?>
 
-    <?php  echo Tag::js('jquery.masonry')?><!-- js -->
-
-<script>
-$('.row').masonry({
-  itemSelector: '.span3'
-});
-</script>
 
 </html>

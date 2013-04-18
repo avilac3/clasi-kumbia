@@ -1,30 +1,28 @@
-<div class="row">
+<div class="row-fluid">
    
         <?php $i=0; $i2=0; foreach ($listClasificados->items as $item) : ?>
+<div class="row-fluid">
 
-            <div class="span3 Entry" >
-              <span class="title" style="height:21px; overflow: hidden" ><?php echo $item->categoria ?></span>
-              <div class="sumario" style="max-height:64px; overflow:hidden"><?php echo $item->nombre ?> </div>
-              <div class="metadata">
-                  <a href="clasificado/<? echo $item->slug?>/" class="ico"><i class="icon-search icon-2x"></i></a>
-                  <a href="#" class="ico"><i class="icon-bookmark-empty icon-2x"></i></a> 
-                  <a href="#" class="ico"><i class="icon-twitter-sign icon-2x"></i></a>
-                  <a href="#" class="ico"><i class="icon-facebook-sign icon-2x"></i></a>
-              </div>
-            </div><!--/span-->
+        <div class="span12" style="padding-left:10px;padding-right:10px;">
+            <strong><?php echo html::link("clasificado/$item->slug/", $item->titulo) ?></strong>
+              <div class="" style="max-height:44px; overflow:hidden"><?php echo strip_tags($item->anuncio) ?> </div>
+              <?php echo html::link("clasificado/$item->slug/", $item->categoria.' - '.$item->ciudad, 'style="color:#e4004b;"') ?>
+              <hr>
+         </div><!--/span-->
+</div><!--/row-fluid-->
     
 
-     <?php   if ($i == 3) { ?>
-            <div class="span3 Entry"> 
-                <span class="title" style="" ><?php echo $i; ?> </span>
+     <?php   if ($i == 1) { ?>
+            <div class="row-fluid"> 
+                <div class="span12" ><?php echo $i; ?> <hr></div>
             </div>
      
      <?php } $i += 1; ?>
 
             
             
-     <?php   if ($i2 == 8) { ?>
-            <div class="span3 Entry"> 
+     <?php   if ($i2 == 4) { ?>
+            <div class="span12"> 
                 <span class="title" style="" ><?php echo$i2; ?></span>
             </div>
      
@@ -48,3 +46,4 @@
       <?php } ?>
 
 
+        <?php // View::partial('masonry') ?>

@@ -7,10 +7,27 @@
 ini_set('display_errors', 'Off');
 
 Load::Lib("recaptcha");
+Load::Lib("slug");
+Load::lib("twitteroauth");
+
 Load::model('clasificados');
 
 class IndexController extends AppController    {
-    
+	protected $consumerKey;
+	protected $consumerSecret;
+	protected $callBack;
+ 
+	public function before_filter() {
+                /* Esto es mio, ya que tengo los valores en la base de datos, lo dejo para servir de ejemplo
+		$rows = $this->Configuration->find("name LIKE '%oauth%' ORDER BY name ASC");
+		$this->callBack 	= $rows[0]->value;
+		$this->consumerKey 	= $rows[1]->value;
+		$this->consumerSecret	= $rows[2]->value; before_filter
+                */
+        $this->callBack 	= "http://localhost/clasi-kumbia/oauth/_callback";
+		$this->consumerKey 	= "KE1VKY3vtKgtVX4ABjzgXw";
+		$this->consumerSecret	= "9dSrnqnLqiuiFF82utgKZ9fqhixGJqCzqlWqxnFU4";
+	}    
 
     
 //        obtiene una lista para paginar
@@ -106,6 +123,37 @@ public function publicar($page=1) {
     $this->pageDescription = 'publica gratis tu casa, automovil, empleo y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';
 
 
+session_start();
+		if (empty($_SESSION['access_token']) || empty($_SESSION['access_token']['oauth_token']) || empty($_SESSION['access_token']['oauth_token_secret'])) 
+		{
+			View::select(NULL, NULL);
+			return Router::redirect("oauth/_register");
+		}
+ 
+		/* Get user access tokens out of the session. */
+		$access_token = $_SESSION['access_token'];
+ 
+		/* If access tokens are not available redirect to connect page. */
+		if (empty($access_token['oauth_token']) || empty($access_token['oauth_token_secret'])) {
+			header('Location: http://localhost/clasi-kumbia/oauth/_register/');
+		}
+ 
+		/* Create a TwitterOauth object with consumer/user tokens. */
+		$connection = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+ 
+		/* Get credentials to test API access */
+		/* $credentials = $connection->get('account/verify_credentials'); */
+		$this->credentials = $connection->get('account/verify_credentials');
+
+ 
+		if ($credentials->error) {
+			$this->msg = $credentials->error."<br><br><a href='http://localhost/clasi-kumbia/oauth/_register'>Register now</a>";
+		}
+		else {
+			$this->msg = "Acceso confirmado, OAuth correcto. Bienvenido ".$credentials->screen_name.".<br>";
+		}    
+
+    
  
 //Hago save a mi aviso con llave de seguridad 
 $this->previousError = "";
@@ -120,42 +168,14 @@ if(Input::hasPost('clasificados')){
             if($clasificado->guardar(Input::post('clasificados'))){
 
 
-                Flash::success('Operación exitosa');
-                Input::delete();
+//                Flash::success('Operación exitosa');
+//                Input::delete();
+//$clasificado = Load::model('clasificados')->find_by_id($clasificado->id);
+//$clasificado->slug =$clasificado->slug.'-'.$clasificado->id;
+//$clasificado->update();
+        
 
 
-
-
-$post = Input::post('clasificados');
-
-$email = $post['email'];
-
-
-//var_dump($email); 
-
-
-//envio email phpmailer avilac3
-/*
-Load::lib('PHPMailer/class.phpmailer');
-$obj = new PHPMailer();
-$obj->IsSMTP();          // Habilitamos el uso de SMTP
-$obj->SMTPAuth   = true;          // Habilitamos la autenticación SMTP
-$obj->Host       = "mail.avisoya.com";          // Nombre del servidor SMTP
-$obj->Port       = 25;          // Puerto del SMTP
-$obj->Username   = "info@avisoya.com";          // Cuenta de usuario del SMTP
-$obj->Password   = "carlos";            // Clave del usuario SMTP
-$obj->AddAddress( "".$clasificado->email."","Titulo del destinatario");
-
-$obj->SetFrom("info@avisoya.com", 'avisoya');
-$obj->Subject = "Felicidades por tu nuevo aviso";
-$body = '<img src="http://www.avisoya.com/img/logo.png"><br></br>
-        <a href="http://www.avisoya.com/clasificado/'.$clasificado->slug.'/">Click Aqui Clasificado</a>  '.$clasificado->email.' ';
-$obj->MsgHTML($body);
-$obj->Send();
-
-
-// finenvio email phpmailer avilac3
-*/
                 return Router::redirect("clasificado/$clasificado->slug/");
 
               }else{ 
@@ -176,11 +196,23 @@ $obj->Send();
     
     }
    
-    
-    
+    public function ver2(){
+        
+
+        
+$clasificado = Load::model('clasificados')->find_by_id(1);
+$clasificado->titulo ="Televisor test slug";
+$clasificado->update();
+
+echo $clasificado->titulo;
+        
+    }
     
 
-public function random(){
+    
+
+
+    public function random(){
 Load::models('clasificados');
     
  $clasificado = new Clasificados();

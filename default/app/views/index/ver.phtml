@@ -1,62 +1,54 @@
-<div class="container" style="margin-top: 8%">
-
 <?php View::content(); ?>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=289009071124610";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-   
 
-<div class="row">
 
-<table width="960px" border="0" align="center">
-<tr>
-   
-<!--tabla-->
-    <td width="180px" valign="top">   
-<!-- barra lateral izquierda nav   -->
-        <?php //View::partial('portal/lateral') ?>
-        <?php View::partial('adsense/160x600') ?>
+<div class="row-fluid">
 
-    </td>  
-<!--fin barra lateral izquierda nav    -->
+    
+    <div class="span8 ">   
 <?php if($mostrar):?>    
 
-    <td width=780px" valign="top">
-   
-        
-                       <?php //View::partial('adsense/doble336x280') ?>
-
+    
 <!--lista clasificados-->
-    <div class="compartir">compartelo
-   <!-- Añade esta etiqueta en la cabecera o delante de la etiqueta body. -->
-  
-  
-  <script type="text/javascript" src="http://apis.google.com/js/plusone.js">
-  {lang: 'es'}
-      </script>
-  <!-- Añade esta etiqueta donde quieras colocar el botón +1 -->
-  <g:plusone></g:plusone>
-  
-  <a href="https://twitter.com/share" class="twitter-share-button" data-via="avisoya" data-lang="es" data-hashtags="<?php echo $ciudad ?>,<?php echo $obtcate ?>">Twittear</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-   
- <!--boton facebook-->
-<div class="fb-like" data-send="false" data-width="400" data-show-faces="false"></div>    
-    </div>
 
-<ul class="general">
+
+<div class="caja">
     <div class="categoria_clasi"><?php //echo Html::img("$imgruta",''); ?></div>
-    <h2 style="color:#000;"><?php echo strip_tags($clasificado->nombre) ?> </h2>
+    <h3 style="color:#000; padding: 0px 10px 0px 10px;"><?php echo strip_tags($clasificado->titulo) ?> </h3><hr>
+    <p style="color:#000; padding: 0px 10px 0px 10px;"><?php echo $clasificado->anuncio ?> </p>
                         
 
     
-</ul>
+    
+</div>
+<div class="breadcrumb">
 
+<span style="color:#e4004b; font-weight: bold">Visitas </span><?php echo $clasificado->visitas ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="color:#e4004b; font-weight: bold">Categoria </span><?php echo $obtcate ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="color:#e4004b; font-weight: bold">Ubicacion </span><?php echo $ciudad ?>
+
+
+    <div class="pull-right">
+        <!-- Lockerz Share BEGIN -->
+<div class="a2a_kit a2a_default_style">
+
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+<a class="a2a_button_email"></a>
+<a class="a2a_dd" href="http://www.addtoany.com/share_save"></a>
+
+</div>
+<script type="text/javascript">
+var a2a_config = a2a_config || {};
+a2a_config.onclick = 1;
+a2a_config.locale = "es";
+</script>
+<script type="text/javascript" src="http://static.addtoany.com/menu/page.js"></script>
+<!-- Lockerz Share END -->
+     
+    </div>
+
+</div>
 
 
 <!-- cuadro imagen se muestra si hay imagen en el clasificado-->
@@ -75,15 +67,8 @@
 <!-- fin cuadro-->
 
 
-<div class="barra-info">
 
-<div class="barrainfoclasi">Visitas: <?php echo $clasificado->visitas ?></div> 
-<div class="barrainfoclasi">Categoria: <?php echo $obtcate ?></div>
-<div class="barrainfoclasi">Fecha: <?php echo $clasificado->fecha_at ?></div>
-<div class="barrainfoclasi">Clasificados <?php echo $ciudad ?></div>
-</div>
 
-</div>
 <br>
 <div id="disqus_thread">
 <script type="text/javascript">
@@ -101,9 +86,72 @@
 Por favor Habilite el  JavaScript 
 </noscript>
   </div>
+    </div>
+
 <!--fin lista clasificados-->
 <?php endif;?>
-    </td>
-    </tr>
-</table>
+
+
+    <div class="span4">   
+<!-- barra lateral izquierda nav   -->
+        <?php //View::partial('portal/lateral') ?>
+        <?php //View::partial('adsense/160x600') ?>
+<div class="caja" style="padding: 10px">
+    
+    <script type="text/javascript">
+    $(function(){
+    init();
+});
+    // Guardar el número y una copia con las XXXX
+    var numero = <?php echo $clasificado->telefono; ?>;
+    var numeroParcial = numero.substring(0, 5) + "XXXX";
+    
+    // se ejcuta al cargar
+   function init(){
+         // poner el numero parcial de entrada
+        document.getElementById("numero").innerHTML = numeroParcial;
+    }
+    
+    // funcion que muestra el numero completo al dar click
+    function mostrarNumero(){
+        document.getElementById("numero").innerHTML = numero;
+    }
+    </script>
+    <div>
+
+        
+        
+        <h3 style="color:#e4004b;"><i class="icon-phone"></i> <span id="numero"><?php echo $clasificado->telefono; ?></span></span>
+        <a href="#" onclick="mostrarNumero() "style="font-size:0.7em;">Ver Telefono</a></h3>
+    </div>    
+    
+    
+    
+    
+    <h3 style="color:#e4004b;"><i class="icon-phone"></i> <?php echo $clasificado->telefono ?></h3>
+    <h5><i class="icon-envelope"></i> <?php echo $clasificado->email ?></h5>
+    <h5><i class="icon-map-marker"></i> <?php echo $ciudad.', Colombia'  ?></h5>
+    <h5><i class="icon-time"></i> <?php echo $clasificado->registrado_at  ?></h5>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <?php echo html::img('avisotes.png','') ?>
+
+
+
+    </div>
+
+
+    </div>
+
+

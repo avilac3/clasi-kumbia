@@ -1,0 +1,13 @@
+<!--  javascript nicedit  -->
+  <?php echo Tag::js('nicedit/nicEdit'); ?>
+
+<!--  Fin javascript nicedit  -->
+
+<script type="text/javascript">
+bkLib.onDomLoaded(function(){
+	nicEditors.allTextAreas(
+		{buttonList : ['bold','italic','underline','ol','ul',
+'strikethrough','hr' ],
+		iconsPath : '<?php echo PUBLIC_PATH;?>/javascript/nicedit/nicEditorIcons.gif'})
+	});
+</script>

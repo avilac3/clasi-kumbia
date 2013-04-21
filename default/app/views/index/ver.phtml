@@ -14,7 +14,7 @@
 <div class="caja">
     <div class="categoria_clasi"><?php //echo Html::img("$imgruta",''); ?></div>
     <h3 style="color:#000; padding: 0px 10px 0px 10px;"><?php echo strip_tags($clasificado->titulo) ?> </h3><hr>
-    <p style="color:#000; padding: 0px 10px 0px 10px;"><?php echo $clasificado->anuncio ?> </p>
+    <p style="padding: 0px 10px 0px 10px;"><?php echo $clasificado->anuncio ?> </p>
                         
 
     
@@ -92,7 +92,7 @@ Por favor Habilite el  JavaScript
 <?php endif;?>
 
 
-    <div class="span4">   
+<div class="span4">   
 <!-- barra lateral izquierda nav   -->
         <?php //View::partial('portal/lateral') ?>
         <?php //View::partial('adsense/160x600') ?>
@@ -103,8 +103,8 @@ Por favor Habilite el  JavaScript
     init();
 });
     // Guardar el número y una copia con las XXXX
-    var numero = <?php echo $clasificado->telefono; ?>;
-    var numeroParcial = numero.substring(0, 5) + "XXXX";
+    var numero = "<?php echo $clasificado->telefono; ?>";
+    var numeroParcial = numero.substring(0, 3) + "XXXX";
     
     // se ejcuta al cargar
    function init(){
@@ -123,25 +123,18 @@ Por favor Habilite el  JavaScript
         
         <h3 style="color:#e4004b;"><i class="icon-phone"></i> <span id="numero"><?php echo $clasificado->telefono; ?></span></span>
         <a href="#" onclick="mostrarNumero() "style="font-size:0.7em;">Ver Telefono</a></h3>
+        <div class="mentel">Cuando llame diga que vio el numero en avisoya </div>
     </div>    
     
     
-    
-    
-    <h3 style="color:#e4004b;"><i class="icon-phone"></i> <?php echo $clasificado->telefono ?></h3>
     <h5><i class="icon-envelope"></i> <?php echo $clasificado->email ?></h5>
     <h5><i class="icon-map-marker"></i> <?php echo $ciudad.', Colombia'  ?></h5>
     <h5><i class="icon-time"></i> <?php echo $clasificado->registrado_at  ?></h5>
 </div>
 
 
-
-
-
-
-
-
-
+<div><?php echo html::link('random', '<i class="icon-random"></i> random','class="btn btn-primary btn-large" style="width:90%;"') ?></div>
+    
 
 
 

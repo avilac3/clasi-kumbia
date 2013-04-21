@@ -32,9 +32,12 @@
   
     <?php echo Form::openMultipart(NULL,"class='form-horizontal'") ; ?>
     <?php echo Form::hidden('clasificados.estatus',NULL, 1); ?>
-    <?php echo Form::hidden('clasificados.vendido',NULL, 0); ?>
+    <?php // echo Form::hidden('clasificados.codigosecurity',NULL, 1); ?>
     <?php echo Form::hidden('clasificados.site',NULL, 'AV'); ?>
     <?php echo Form::hidden('clasificados.twitter_id',NULL, $credentials->id); ?>
+    <?php echo Form::hidden('clasificados.id') ?>
+    <?php echo Form::hidden('clasificados.codigosecurity');?>
+
     
   <div class="control-group">
     <label class="control-label st" for="selectCategoria">Categoria</label>

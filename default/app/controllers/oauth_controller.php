@@ -98,7 +98,8 @@ class OAuthController extends AppController{
 		session_start();
 		session_destroy();
 		View::select(NULL, NULL);
-		return Router::redirect("oauth/index");
+               Flash::success('Operación exitosa');
+                return Router::redirect("/");
 	}
  
 	public function _callback() 

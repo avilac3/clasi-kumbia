@@ -168,8 +168,8 @@ if(Input::hasPost('clasificados')){
             if($clasificado->guardar(Input::post('clasificados'))){
 
 
-//                Flash::success('Operación exitosa');
-//                Input::delete();
+               Flash::success('Operación exitosa');
+                Input::delete();
 //$clasificado = Load::model('clasificados')->find_by_id($clasificado->id);
 //$clasificado->slug =$clasificado->slug.'-'.$clasificado->id;
 //$clasificado->update();
@@ -209,6 +209,161 @@ echo $clasificado->titulo;
     }
     
 
+
+    
+// Editar CLASIFICADO s    
+    
+
+public function editar($page=1) {
+//    etiqueta title y description  
+    $this->pageTitle = 'Edita tu clasificado gratis';
+    $this->pageDescription = 'publica gratis tu casa, automovil, empleo y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';
+
+
+session_start();
+		if (empty($_SESSION['access_token']) || empty($_SESSION['access_token']['oauth_token']) || empty($_SESSION['access_token']['oauth_token_secret'])) 
+		{
+			View::select(NULL, NULL);
+			return Router::redirect("oauth/_register");
+		}
+ 
+		/* Get user access tokens out of the session. */
+		$access_token = $_SESSION['access_token'];
+ 
+		/* If access tokens are not available redirect to connect page. */
+		if (empty($access_token['oauth_token']) || empty($access_token['oauth_token_secret'])) {
+			header('Location: http://localhost/clasi-kumbia/oauth/_register/');
+		}
+ 
+		/* Create a TwitterOauth object with consumer/user tokens. */
+		$connection = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+ 
+		/* Get credentials to test API access */
+		$credentials = $connection->get('account/verify_credentials'); 
+		$this->credentials = $connection->get('account/verify_credentials');
+
+ 
+		if ($credentials->error) {
+			$this->msg = $credentials->error."<br><br><a href='http://localhost/clasi-kumbia/oauth/_register'>Register now</a>";
+		}
+		else {
+			$this->msg = "Acceso confirmado, OAuth correcto. Bienvenido ".$credentials->screen_name.".<br>";
+		
+//    Obtener lista de clasficados con el join
+$this->listClasificados = Load::model('clasificados')->getMisClasificados( $twitter_id="$credentials->id",$page,10);  
+                        
+                        
+                        
+                        
+                        
+                        
+                }    
+
+    
+   
+    
+    }
+       
+
+// PUBLICAR CLASIFICADO     
+    
+
+public function edita($slug, $page=1) {
+//    etiqueta title y description  
+    $this->pageTitle = 'Edita tu clasificado gratis';
+    $this->pageDescription = 'publica gratis tu casa, automovil, empleo y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';
+
+
+session_start();
+		if (empty($_SESSION['access_token']) || empty($_SESSION['access_token']['oauth_token']) || empty($_SESSION['access_token']['oauth_token_secret'])) 
+		{
+			View::select(NULL, NULL);
+			return Router::redirect("oauth/_register");
+		}
+ 
+		/* Get user access tokens out of the session. */
+		$access_token = $_SESSION['access_token'];
+ 
+		/* If access tokens are not available redirect to connect page. */
+		if (empty($access_token['oauth_token']) || empty($access_token['oauth_token_secret'])) {
+			header('Location: http://localhost/clasi-kumbia/oauth/_register/');
+		}
+ 
+		/* Create a TwitterOauth object with consumer/user tokens. */
+		$connection = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+ 
+		/* Get credentials to test API access */
+		$credentials = $connection->get('account/verify_credentials'); 
+		$this->credentials = $connection->get('account/verify_credentials');
+
+ 
+		if ($credentials->error) {
+			$this->msg = $credentials->error."<br><br><a href='http://localhost/clasi-kumbia/oauth/_register'>Register now</a>";
+		}
+		else {
+			$this->msg = "Acceso confirmado, OAuth correcto. Bienvenido ".$credentials->screen_name.".<br>";
+		
+//    Obtener lista de clasficados con el join
+// $this->listClasificados = Load::model('clasificados')->getMisClasificados( $twitter_id="$credentials->id",$page,10);  
+                        
+
+
+             $clasificado = new Clasificados();              
+
+
+ 
+//Hago save a mi aviso con llave de seguridad 
+$this->previousError = "";
+if(Input::hasPost('clasificados')){   
+    if(SecurityKey::isValid()) {
+       if (Input::hasPost('recaptcha_response_field')){
+            // Realizamos la comprobacion
+            $ret = reCaptcha::validate();
+            if ($ret->is_valid) {
+//                $this->Clasificados = Input::post('clasificados');                      
+             $clasificado = new Clasificados();              
+            if($clasificado->update(Input::post('clasificados'))){
+
+               Flash::success('Operación exitosa');
+//                Input::delete();
+//$clasificado = Load::model('clasificados')->find_by_id($clasificado->id);
+//$clasificado->slug =$clasificado->slug.'-'.$clasificado->id;
+//$clasificado->update();
+        
+
+
+                return Router::redirect("editar/");
+
+              }else{ 
+                  Flash::error($clasificado->error);                                                                             
+              }
+            }
+            // Enviamos el error a la vista
+            $this->previousError = $ret->error;
+            Flash::error('Codigo AntiSpam proporcionado no es el correcto. por favor, inténtelo de nuevo.');
+        }else{
+                        //si no se ha enviando el captcha declaramas la variable a NULL
+                        $this->previousError = NULL;
+        }
+    }  
+         
+}
+
+
+else {
+            //Aplicando la autocarga de objeto, para comenzar la edición
+            $this->clasificados = $clasificado->find_by_slug($slug);
+        }
+                        
+                        
+                        
+                        
+                }    
+
+    
+   
+    
+    }    
     
 
 
@@ -246,8 +401,8 @@ $clasificado = new Clasificados();
     $this->estatus = $clasificado->estatus;     //ciudad
   
 //    etiqueta title y description SEO 
-    $this->pageTitle = substr(strip_tags($clasificado->minombre),0,90);
-    $this->pageDescription = $clasificado->minombre;
+    $this->pageTitle = substr(strip_tags($clasificado->titulo),0,90);
+    $this->pageDescription = substr(strip_tags($clasificado->anuncio),0,90);
    
      
 //     condicion para no mostrar los registros caducados por fecha o estatus

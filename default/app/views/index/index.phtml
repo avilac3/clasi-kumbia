@@ -20,10 +20,14 @@
     <div class="span4 caja">
                 <div class="well well-small">
                     <span class="lead">Gratis Faciles y Rapidos</span>
-                </div>
+                </div><div style="margin-left: 10px; margin-right: 10px">
 
+                    <div class="row-fluid">                    
+<div class="span6"><?php echo html::link('random', '<i class="icon-random"></i> random','') ?></div>
+<div class="span6"><?php echo html::link('topvisitas', '<i class="icon-thumbs-up"></i> Top Visitas','') ?></div>
+</div>
                     
-                    <hr><h4>Categorias</h4><hr>
+                    <hr><h4><i class="icon-th-list"></i> Categorias</h4><hr>
              <div style="width:100%; float:left; margin: 10px;">
                         <?php $categorias = Load::model('categorias')->find("order: rand()"); foreach ($categorias as $item) : ?>
 
@@ -33,7 +37,7 @@
              </div> 
                            <div style="width:100%; float:left; margin-bottom: 15px;">
       
-                    <hr><h4>Ciudades</h4><hr>
+                    <hr><h4><i class="icon-building"></i> Ciudades</h4><hr>
              <ul>
                   <?php $ciudades = Load::model('ciudades')->find("order: rand()");
                         foreach ($ciudades as $itemc) : ?>
@@ -43,7 +47,7 @@
                            </div>
                         <?php echo html::img('avisotes.png','') ?>
                         <?php echo html::img('avisotes.png','') ?>
-
+        </div>
     </div>
 
 

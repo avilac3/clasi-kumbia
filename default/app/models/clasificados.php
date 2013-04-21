@@ -11,7 +11,7 @@ class Clasificados extends ActiveRecord{
            
         
         $this->fecha_baja = date("Y-m-d H:i:s", strtotime($this->fecha_baja)); 
-        $this->slug = Slug::slugurl($this->titulo);
+        $this->slug = Slug::slugurl($this->titulo, $this->twitter_id);
     
         
         
@@ -227,10 +227,32 @@ public function ultimos($limit=30) {
     }     
     
     
+    
+ //    Obtener clasiciados por id twitter
+        
+        
+         public function getMisClasificados( $twitter_id, $page=1, $ppage=20)
+    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.twitter_id,clasificados.estado, clasificados.visitas, clasificados.registrado_at, clasificados.modificado_in, categorias.nombre as categoria, ciudades.nombre as ciudad 
+        FROM clasificados
+            INNER JOIN categorias 
+            on clasificados.categoria_id = categorias.id
+            
+            INNER JOIN ciudades
+            on clasificados.ciudad_id = ciudades.id
+            
+            Where clasificados.twitter_id ='$twitter_id' AND clasificados.estado = 1 AND clasificados.site = 'AV'
+            ORDER BY clasificados.id DESC";
+    
+    return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
+    }      
+    
+    
+    
+    
   //    Obtener clasiciados con SLUG   y  fecha_baja mayor que
             
         public function getInnerJoinClasificadosslug($slug)
-     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.anuncio as minombre, clasificados.estado, clasificados.visitas, clasificados.registrado_at, categorias.nombre as categoria, clasificados.ciudad_id, ciudades.nombre as ciudad
+     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.estado, clasificados.visitas, clasificados.registrado_at, categorias.nombre as categoria, clasificados.ciudad_id, ciudades.nombre as ciudad
             FROM clasificados
             INNER JOIN categorias 
             on clasificados.categoria_id = categorias.id
@@ -244,7 +266,7 @@ public function ultimos($limit=30) {
   //    Obtener clasiciado Random
     
         public function getclasificadorandom()
-       {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.anuncio as minombre, clasificados.estado, clasificados.visitas, clasificados.registrado_at,  categorias.ruta as imgruta, categorias.nombre as categoria, clasificados.idciudad_FK, ciudades.nombre as ciudad
+       {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.anuncio as minombre, clasificados.estado, clasificados.visitas, clasificados.registrado_at, categorias.nombre as categoria, clasificados.ciudad_id, ciudades.nombre as ciudad
             FROM clasificados
             INNER JOIN categorias 
             on clasificados.categoria_id = categorias.id

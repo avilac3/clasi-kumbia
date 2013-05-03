@@ -1,7 +1,7 @@
 <?php Tag::css('scaffold') ?>
 <div id="scaffold">
     <?php View::content(); ?>
-    <h1>Video</h1>    
+
     <?php if ($listClasificados->items) : ?>
       
     <table>
@@ -14,8 +14,8 @@
             <tbody>
             <?php foreach ($listClasificados->items as $item) : ?>
                 <tr>                                        
-                    <td><?php echo $item->nombre ?></td>
-                    <td><?php echo $item->estatus ?></td>
+                    <td><?php echo $item->titulo ?></td>
+                    <td><?php echo $item->estado ?></td>
                     <td><?php echo $item->visitas ?></td>
                     <td><?php echo Html::linkAction("ver/$item->id/", 'Ver') ?> |
                     <?php echo Html::linkAction("editar/$item->id/", 'Editar') ?> |

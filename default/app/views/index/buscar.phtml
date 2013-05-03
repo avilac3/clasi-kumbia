@@ -1,0 +1,14 @@
+<!--Busqueda-->
+    <?php View::content(); ?>
+
+    <div class="row-fluid caja">
+        <div style="padding: 10px"><h3>Busqueda <?php echo $busqueda ;?>
+</h3><hr></div>
+
+<!--lista clasificados-->
+
+ <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"topvisitas")) ?>
+
+
+<!--fin lista clasificados-->
+</div>   

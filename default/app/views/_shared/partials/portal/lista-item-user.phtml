@@ -1,17 +1,29 @@
+<script type="text/javascript">
+function confirmar() {
+    if(confirm("¿Seguro que ha leido las condiciones del contrato?")) return false;
+    }
+
+
+</script>
+
+
 <div class="row-fluid">
    
         <?php $i=0; $i2=0; foreach ($listClasificados->items as $item) : ?>
 <div class="row-fluid" style="border-bottom: 1px solid #eeeeee; margin-top: 10px; margin-bottom: 10px; padding-bottom: 10px">
 
-        <div class="span8" style="padding-left:10px;padding-right:10px;">
+        <div class="span7" style="padding-left:10px;padding-right:10px;">
             <strong><?php echo html::link("clasificado/$item->slug/", $item->titulo) ?></strong>
               <div class="" style="max-height:44px; overflow:hidden"><?php echo strip_tags($item->anuncio) ?> </div>
               <?php echo html::link("clasificado/$item->slug/", $item->categoria.' - '.$item->ciudad, 'style="color:#e4004b;"') ?>
         </div><!--/span-->
-         <div class="span4">
-             <?php echo html::link("clasificado/$item->slug/", '<i class="icon-search"></i> Ver </a>','target="_blank" style="margin-right: 30px"')?>
-             <?php echo html::link("index/edita/$item->slug/", '<i class="icon-pencil"></i> Editar</a>','style="margin-right: 30px"')?>
-             <?php echo html::link("editar/$item->slug/", '<i class="icon-flag"></i> Vendido</a>','style="margin-right: 30px"')?>
+         <div class="span5">
+             <div class="row-fluid">
+                 
+             <?php echo html::link("clasificado/$item->slug/", '<i class="icon-search"></i> Ver </a>','target="_blank" style="margin-right: 30px" class="btn btn-success span2"')?>
+             <?php echo html::link("index/edita/$item->slug/", '<i class="icon-pencil"></i> Editar</a>','style="margin-right: 30px" class="btn btn-warning span2"')?>
+             <?php echo html::link("estado/$item->id", '<i class="icon-flag"></i> Vendido</a>',' onClick="javascript: return confirm(\'esta seguro que desea cambiar el estado de esta publicacion ?\');" style="margin-right: 30px" class="btn btn-danger span3"')?>
+            </div>
          </div>
 
 </div><!--/row-fluid-->

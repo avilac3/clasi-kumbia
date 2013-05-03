@@ -185,7 +185,23 @@ public function ultimos($limit=30) {
         }     
 
     
-
+ //    Obtener clasiciados con busqueda fecha_baja mayor que
+        
+        
+         public function getInnerJoinClasificadosBusqueda($busqueda, $page=1, $ppage=20)
+    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.estado, clasificados.visitas, clasificados.registrado_at, clasificados.modificado_in, categorias.nombre as categoria, ciudades.nombre as ciudad 
+        FROM clasificados
+            INNER JOIN categorias 
+            on clasificados.categoria_id = categorias.id
+            
+            INNER JOIN ciudades
+            on clasificados.ciudad_id = ciudades.id
+            
+            Where clasificados.titulo ='$busqueda' OR ciudades.nombre LIKE '%$busqueda%' OR categorias.nombre LIKE '%$busqueda%' AND clasificados.estado = 1 AND clasificados.site = 'AV'
+            ORDER BY clasificados.id DESC";
+    
+    return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
+    }     
     
  
  //    Obtener clasiciados con fecha_baja mayor que
@@ -240,7 +256,7 @@ public function ultimos($limit=30) {
             INNER JOIN ciudades
             on clasificados.ciudad_id = ciudades.id
             
-            Where clasificados.twitter_id ='$twitter_id' AND clasificados.estado = 1 AND clasificados.site = 'AV'
+            Where clasificados.twitter_id ='$twitter_id' AND clasificados.vendido = 0 AND clasificados.estado = 1 AND clasificados.site = 'AV'
             ORDER BY clasificados.id DESC";
     
     return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
@@ -285,7 +301,7 @@ public function ultimos($limit=30) {
 //    Obtener Top visitas
     
     public function getInnerJoinTopvisitas($page=1, $ppage=20)
-    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.anuncio, clasificados.registrado_at, clasificados.estado, clasificados.visitas,  categorias.nombre as categoria, ciudades.nombre as ciudad
+    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.registrado_at, clasificados.estado, clasificados.visitas,  categorias.nombre as categoria, ciudades.nombre as ciudad
             FROM clasificados
             INNER JOIN categorias 
             on clasificados.categoria_id = categorias.id

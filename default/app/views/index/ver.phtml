@@ -9,9 +9,9 @@
 
     
 <!--lista clasificados-->
+<?php if ($clasificado->vendido == 1){ flash::error('Esta Publicacion se encuentra vendida');}?>
 
-
-<div class="caja">
+<div class="caja"> 
     <div class="categoria_clasi"><?php //echo Html::img("$imgruta",''); ?></div>
     <h3 style="color:#000; padding: 0px 10px 0px 10px;"><?php echo strip_tags($clasificado->titulo) ?> </h3><hr>
     <p style="padding: 0px 10px 0px 10px;"><?php echo $clasificado->anuncio ?> </p>
@@ -127,7 +127,7 @@ Por favor Habilite el  JavaScript
     </div>    
     
     
-    <h5><i class="icon-envelope"></i> <?php echo $clasificado->email ?></h5>
+    <?php if ($clasificado->email_estado == 1){ ?> <h5> <i class="icon-envelope"></i> <?php echo $clasificado->email ?></h5><?php }?>
     <h5><i class="icon-map-marker"></i> <?php echo $ciudad.', Colombia'  ?></h5>
     <h5><i class="icon-time"></i> <?php echo $clasificado->registrado_at  ?></h5>
 </div>

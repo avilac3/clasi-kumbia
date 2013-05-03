@@ -268,7 +268,7 @@ $this->listClasificados = Load::model('clasificados')->getMisClasificados( $twit
 // PUBLICAR CLASIFICADO     
     
 
-public function edita($slug, $page=1) {
+public function edita($slugc) {
 //    etiqueta title y description  
     $this->pageTitle = 'Edita tu clasificado gratis';
     $this->pageDescription = 'publica gratis tu casa, automovil, empleo y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';
@@ -303,11 +303,6 @@ session_start();
 		else {
 			$this->msg = "Acceso confirmado, OAuth correcto. Bienvenido ".$credentials->screen_name.".<br>";
 		
-//    Obtener lista de clasficados con el join
-// $this->listClasificados = Load::model('clasificados')->getMisClasificados( $twitter_id="$credentials->id",$page,10);  
-                        
-
-
              $clasificado = new Clasificados();              
 
 
@@ -367,6 +362,72 @@ else {
     
 
 
+    // PUBLICAR CLASIFICADO     
+    
+
+public function estado($id) {
+
+session_start();
+		if (empty($_SESSION['access_token']) || empty($_SESSION['access_token']['oauth_token']) || empty($_SESSION['access_token']['oauth_token_secret'])) 
+		{
+			View::select(NULL, NULL);
+			return Router::redirect("oauth/_register");
+		}
+ 
+		/* Get user access tokens out of the session. */
+		$access_token = $_SESSION['access_token'];
+ 
+		/* If access tokens are not available redirect to connect page. */
+		if (empty($access_token['oauth_token']) || empty($access_token['oauth_token_secret'])) {
+			header('Location: http://localhost/clasi-kumbia/oauth/_register/');
+		}
+ 
+		/* Create a TwitterOauth object with consumer/user tokens. */
+		$connection = new TwitterOAuth($this->consumerKey, $this->consumerSecret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+ 
+		/* Get credentials to test API access */
+		$credentials = $connection->get('account/verify_credentials'); 
+		$this->credentials = $connection->get('account/verify_credentials');
+
+ 
+		if ($credentials->error) {
+			$this->msg = $credentials->error."<br><br><a href='http://localhost/clasi-kumbia/oauth/_register'>Register now</a>";
+		}
+		else {
+			$this->msg = "Acceso confirmado, OAuth correcto. Bienvenido ".$credentials->screen_name.".<br>";
+		
+
+                        
+
+$this->clasificado = Load::model('clasificados')->find_by_id($id);
+$clasificado = Load::model('clasificados')->find_by_id($id);
+
+if ($clasificado->vendido = (int)(!$clasificado->vendido )) {
+    
+    $clasificado->vendido = '1';
+    $clasificado->update();
+    Flash::success('Operación exitosa  ');
+                    return Router::redirect("editar/");
+
+}else {
+
+    $clasificado->vendido = '0';
+    $clasificado->update();
+    Flash::success('Operación exitosa');
+                    return Router::redirect("editar/");
+
+
+}
+   
+    
+    }
+}
+    
+
+    
+    
+    
+    
     public function random(){
 Load::models('clasificados');
     
@@ -435,6 +496,24 @@ $clasificado = new Clasificados();
 
 
     }
+    
+    
+    
+    
+        public function buscar($busqueda= NULL, $page=1){
+
+            $this->busqueda = $busqueda;
+        if ($busqueda){ //si viene lleno el parametro
+    $this->listClasificados = Load::model('clasificados')->getInnerJoinClasificadosBusqueda($busqueda,$page,10);  
+        }else if (Input::get("b")){ //si se manda el form
+            Router::toAction("../buscar/" . Input::get("b"));
+        }  else {
+          flash::error('por favor inserte un parametro para buscar');  
+            Router::redirect('./');
+        }
+
+
+ }
     
     
        

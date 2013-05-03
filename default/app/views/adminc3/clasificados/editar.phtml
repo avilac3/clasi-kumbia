@@ -1,11 +1,13 @@
 <?php View::content(); ?>
-<h3>Editar menu<h3>
-<div  id="scaffold"> 
+<br><div  id="scaffold"> 
 <?php echo Form::open(); // por defecto llama a la misma url ?>
  
         <label>Nombre
-        <?php echo Form::text('clasificados.nombre') ?></label>
+        <?php echo Form::text('clasificados.titulo') ?></label>
  
+        <label>Anuncio
+        <?php echo Form::textarea('clasificados.anuncio') ?></label>
+
         <label>Visitas
         <?php echo Form::text('clasificados.visitas') ?></label>
  
@@ -14,6 +16,9 @@
     
         <label>ciudad_id
         <?php echo Form::text('clasificados.ciudad_id') ?></label>
+    
+        <label>twitter_id
+        <?php echo Form::text('clasificados.twitter_id') ?></label>
         
         <label>code codigosecurity
         <?php echo Form::text('clasificados.codigosecurity') ?></label>
@@ -22,9 +27,12 @@
         <?php echo Form::text('clasificados.site') ?></label>
         
         <label>fecha_baja
-        <?php echo Form::text('clasificados.fecha_baja') ?></label>
+        <?php echo Form::text('clasificados.registrado_at') ?></label>
         <label>Categoria
         <?php echo Form::dbSelect('clasificados.categoria_id', 'nombre',array('categorias', 'find'), '-- seleccione categoria --') ?></label>
+
+        <label>Vendido
+        <?php echo Form::text('clasificados.vendido') ?></label>
     
         <label>Estatus
     

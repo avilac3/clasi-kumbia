@@ -71,10 +71,24 @@
 
   <div class="control-group">
     <label class="control-label st" for="inputEmail">Email</label>
-    <div class="controls">
+    <div class="controls ">
         <?php  echo Form::text('clasificados.email','class="input-block-level" placeholder="Email Valido" required'); ?>
+        
     </div>
   </div>
+        
+
+
+  <div class="control-group">
+    <label class="control-label st" for="inputEmail"></label>
+    <div class="controls ">
+<?php echo Form::radio("clasificados.email_estado", '1', NULL, true);?> Mostrar Email  
+<?php echo Form::radio("clasificados.email_estado", '0','class="radio" style="margin-left:10px;"', false);?> No mostrar Email.        
+    </div>
+  </div>        
+        
+
+        
 
   <div class="control-group">
     <label class="control-label st" for="inputTelefono">Telefono</label>

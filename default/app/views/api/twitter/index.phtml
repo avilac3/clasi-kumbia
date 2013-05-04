@@ -1,0 +1,36 @@
+<?php
+//para no mostrar errores
+error_reporting(0);
+
+if($clasificado) {
+        
+    // Requiere la libreria de twitter
+    Load::lib('api/bottwitter/twitter');
+
+    //Armo las llaves
+    $consumerKey = "NYwfdSLByXe6A6lsIaynA";
+    $consumerSecretKey = "wf6Jv79PgrApsQMwMWE25fKZoTF9l4b0FTynPCW2E";
+    $oAuthToken = "299674801-Bf4r6H9d1icNsjcJVAVOOJdxEcQBFx9tEF2vTPS7";
+    $oAuthTokenSecret = "m3PAKUShp2lk3dUGnAkVctheB80MqeFlLVQL9ILZM";
+
+    // Crear una nueva instancia
+    $twitter = new Twitter($consumerKey, $consumerSecretKey);
+
+    // Setear tokens
+    $twitter->setOAuthToken($oAuthToken);
+    $twitter->setOAuthTokenSecret($oAuthTokenSecret);
+
+    // Verificar credenciales
+    $user = $twitter->accountVerifyCredentials();
+
+    // Mensaje        
+    $url = "http://avisoya.com/clasificado/$clasificado->slug/";
+    $ciudad = (empty($clasificado->ciudad)) ? '' : "#{$clasificado->ciudad}";
+    $categoria = (empty($clasificado->categoria)) ? '' : "#{$clasificado->categoria}";
+    $pais = (empty($clasificado->pais)) ? '' : "#{$clasificado->pais}";    
+       
+    // Enviar
+     $response = $twitter->statusesUpdate($clasificado->titulo.' '.$url.' '.$ciudad.' '.$categoria.' '.$pais);
+    
+}
+

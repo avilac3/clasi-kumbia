@@ -1,30 +1,32 @@
-<nav>
+    <div class="span4 caja">
+                <div class="well well-small">
+                    <span class="lead">Gratis Faciles y Rapidos</span>
+                </div><div style="margin-left: 10px; margin-right: 10px">
 
-    <?php echo Html::link('topvisitas/','Top Visitas'); ?><br>
+                    <div class="row-fluid">                    
+<div class="span6"><?php echo html::link('random', '<i class="icon-random"></i> random','') ?></div>
+<div class="span6"><?php echo html::link('topvisitas', '<i class="icon-thumbs-up"></i> Top Visitas','') ?></div>
+</div>
+                    
+                    <hr><h4><i class="icon-th-list"></i> Categorias</h4><hr>
+             <div style="width:100%; float:left; margin: 10px;">
+                        <?php $categorias = Load::model('categorias')->find("order: rand()"); foreach ($categorias as $item) : ?>
 
-             <b>Categorias</b><br/>
+                     <div class='caja_categoria'> <?php echo Html::link("categoria/$item->nombre/",$item->nombre) ?></div>
+                     <?php endforeach; ?>
+
+             </div> 
+                           <div style="width:100%; float:left; margin-bottom: 15px;">
       
+                    <hr><h4><i class="icon-building"></i> Ciudades</h4><hr>
              <ul>
-                 <?php
-                    $categorias = Load::model('categorias')->find();
-                    foreach ($categorias as $item) : 
-                    echo "<li>".Html::link("categoria/$item->nombre/",$item->nombre)."</li>";
-                     endforeach; 
-                 ?>
-             </ul>   
-         
-             <b>Ciudades</b><br/>
-     
-             <ul>
-                  <?php 
-                        $ciudades = Load::model('ciudades')->find();
-                        foreach ($ciudades as $itemc) : 
-                        echo "<li>".Html::link("clasificados/$itemc->nombre/",$itemc->nombre)."</li>";
-                        endforeach; 
-                  ?>
-             </ul>
-             <br>
-                            <?php //View::partial('adsense/160x600') ?>
+                  <?php $ciudades = Load::model('ciudades')->find("order: rand()");
+                        foreach ($ciudades as $itemc) : ?>
+                 
+                        <div class='caja_categoria'> <?php echo Html::link("clasificados/$itemc->nombre/",$itemc->nombre)?></div>
+                       <?php  endforeach; ?>
+                           </div>
+                               <?php View::partial('adsense/300x600') ?>
 
-             </br>
-</nav>
+        </div>
+    </div>

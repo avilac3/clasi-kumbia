@@ -2,13 +2,14 @@
 <div class="row-fluid" style="margin-top: 0px;">
     <div class="span9 header"><? echo html::link("", html::img('logo2.png','','width="400"'), 'class="span6"') ?>
     <?php echo Form::open('buscar/','GET'); // por defecto llama a la misma url ?>
-<?php echo Form::text('b'); ?>
-  <button type="submit" class="btn">Search</button>
-  <?php echo Form::close() ?>
+      <div class="input-append" style="margin-top:20px;">
+        <?php echo Form::text('b'); ?>
+          <button type="submit" class="btn"><i class="icon-search"></i></button>
+      </div>
+      <?php echo Form::close() ?>
 
     </div>
     <div class="span3">
-        <?php //echo html::img('boton-publicar-twitter2.png') ?>
         <?php echo html::link('publicar', 'Publica con <i class="icon-twitter icon-2x"></i>','class="btn btn-large btn-warning" style="line-height: 23px; font-size:22px;"')?>
 </div>
 </div>

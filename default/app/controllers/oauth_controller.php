@@ -12,7 +12,7 @@ class OAuthController extends AppController{
 		$this->consumerKey 	= $rows[1]->value;
 		$this->consumerSecret	= $rows[2]->value; before_filter
                 */
-        $this->callBack 	= "http://localhost/clasi-kumbia/oauth/_callback";
+        $this->callBack 	= "http://avisoya.com/oauth/_callback";
 		$this->consumerKey 	= "KE1VKY3vtKgtVX4ABjzgXw";
 		$this->consumerSecret	= "9dSrnqnLqiuiFF82utgKZ9fqhixGJqCzqlWqxnFU4";
 	}
@@ -33,7 +33,7 @@ class OAuthController extends AppController{
  
 		/* If access tokens are not available redirect to connect page. */
 		if (empty($access_token['oauth_token']) || empty($access_token['oauth_token_secret'])) {
-			header('Location: http://localhost/clasi-kumbia/oauth/_register/');
+			header('Location: http://avisoya.com/oauth/_register/');
 		}
  
 		/* Create a TwitterOauth object with consumer/user tokens. */
@@ -46,10 +46,10 @@ class OAuthController extends AppController{
 
  
 		if ($credentials->error) {
-			$this->msg = $credentials->error."<br><br><a href='http://localhost/clasi-kumbia/oauth/_register'>Register now</a>";
+			$this->msg = $credentials->error."<br><br><a href='http://avisoya.com/oauth/_register'>Register now</a>";
 		}
 		else {
-			$this->msg = "Acceso confirmado, OAuth correcto. Bienvenido ".$credentials->screen_name.".<br><br><a href='http://localhost/clasi-kumbia/oauth/_logout'>Logout</a>";
+			$this->msg = "Acceso confirmado, OAuth correcto. Bienvenido ".$credentials->screen_name.".<br><br><a href='http://avisoya.com/oauth/_logout'>Logout</a>";
 		}
 	}
  
@@ -110,7 +110,7 @@ class OAuthController extends AppController{
 		/* If the oauth_token is old redirect to the connect page. */
 		if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']) {
 			$_SESSION['oauth_status'] = 'oldtoken';
-			header('Location: http://localhost/clasi-kumbia/oauth/_register/');
+			header('Location: http://avisoya.com/oauth/_register/');
 		}
  
 		/* Create TwitteroAuth object with app key/secret and token key/secret from default phase */
@@ -130,10 +130,10 @@ class OAuthController extends AppController{
 		if (200 == $connection->http_code) {
 			/* The user has been verified and the access tokens can be saved for future use */
 			$_SESSION['status'] = 'verified';
-			header('Location: http://localhost/clasi-kumbia/publicar/');
+			header('Location: http://avisoya.com/publicar/');
 		} else {
 			/* Save HTTP status for error dialog on connnect page.*/
-			header('Location: http://localhost/clasi-kumbia/oauth/_register/');
+			header('Location: http://avisoya.com/oauth/_register/');
 		}
 		die();
 	}

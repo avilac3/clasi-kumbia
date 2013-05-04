@@ -57,9 +57,9 @@ function confirmar() {
     <?php if(isset($url)) { ?>
     
       
-      <?php View::partial('paginators/classic', false, array('page' => $listClasificados, 'url'=>$url )); ?>
+      <?php View::partial('paginators/bootstrap', false, array('page' => $listClasificados, 'url'=>$url )); ?>
       <?php } else { ?>
-        <?php View::partial('paginators/classic', false, array('page' => $listClasificados )); ?>
+        <?php View::partial('paginators/bootstrap', false, array('page' => $listClasificados )); ?>
       <?php } ?>
 
 

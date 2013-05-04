@@ -8,7 +8,6 @@
 
     <?php View::content(); ?>
 
-
 <div class="row-fluid">
     <div class="span8 caja">
         <div class="well well-small"><span class="lead">Clasificados Gratis Faciles y Rapidos</span></div>
@@ -17,38 +16,9 @@
  <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"pag")) ?>
 <!--fin lista clasificados-->
     </div>
-    <div class="span4 caja">
-                <div class="well well-small">
-                    <span class="lead">Gratis Faciles y Rapidos</span>
-                </div><div style="margin-left: 10px; margin-right: 10px">
-
-                    <div class="row-fluid">                    
-<div class="span6"><?php echo html::link('random', '<i class="icon-random"></i> random','') ?></div>
-<div class="span6"><?php echo html::link('topvisitas', '<i class="icon-thumbs-up"></i> Top Visitas','') ?></div>
-</div>
-                    
-                    <hr><h4><i class="icon-th-list"></i> Categorias</h4><hr>
-             <div style="width:100%; float:left; margin: 10px;">
-                        <?php $categorias = Load::model('categorias')->find("order: rand()"); foreach ($categorias as $item) : ?>
-
-                     <div class='caja_categoria'> <?php echo Html::link("categoria/$item->nombre/",$item->nombre) ?></div>
-                     <?php endforeach; ?>
-
-             </div> 
-                           <div style="width:100%; float:left; margin-bottom: 15px;">
-      
-                    <hr><h4><i class="icon-building"></i> Ciudades</h4><hr>
-             <ul>
-                  <?php $ciudades = Load::model('ciudades')->find("order: rand()");
-                        foreach ($ciudades as $itemc) : ?>
-                 
-                        <div class='caja_categoria'> <?php echo Html::link("clasificados/$itemc->nombre/",$itemc->nombre)?></div>
-                       <?php  endforeach; ?>
-                           </div>
-                        <?php echo html::img('avisotes.png','') ?>
-                        <?php echo html::img('avisotes.png','') ?>
-        </div>
-    </div>
+    <!-- div class="span4 caja"  -->
+    <?php view::partial('portal/lateral'); ?>
+    <!-- fin div class="span4 caja"  -->
 
 
 </div>

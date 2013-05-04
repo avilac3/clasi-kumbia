@@ -15,7 +15,9 @@
 
      <?php   if ($i == 1) { ?>
             <div class="row-fluid"> 
-                <div class="span12" ><?php echo $i; ?> <hr></div>
+                <div >
+                    <center><?php View::partial('adsense/468x60')?></center>
+                </div><hr>
             </div>
      
      <?php } $i += 1; ?>
@@ -23,9 +25,9 @@
             
             
      <?php   if ($i2 == 4) { ?>
-            <div class="span12"> 
-                <span class="title" style="" ><?php echo$i2; ?></span>
-            </div>
+            <div> 
+                    <center><?php View::partial('adsense/468x60')?></center>
+            </div><hr>
      
      <?php } $i2 += 1; ?>            
             
@@ -41,9 +43,9 @@
     <?php if(isset($url)) { ?>
     
       
-      <?php View::partial('paginators/classic', false, array('page' => $listClasificados, 'url'=>$url )); ?>
+      <?php View::partial('paginators/bootstrap', false, array('page' => $listClasificados, 'url'=>$url )); ?>
       <?php } else { ?>
-        <?php View::partial('paginators/classic', false, array('page' => $listClasificados )); ?>
+        <?php View::partial('paginators/bootstrap', false, array('page' => $listClasificados )); ?>
       <?php } ?>
 
 

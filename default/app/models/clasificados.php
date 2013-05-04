@@ -143,34 +143,10 @@ class Clasificados extends ActiveRecord{
         return $this;                            
     }
 
-// Test pruebas
 
-public function ultimosavisos($limit=5) {
-        $today = date('now');
-        return $this->find('order: fecha_at desc',
-                   "conditions: fecha_at <= $today",
-                   "limit: $limit");
- 
-    }
-
-public function ultimos($limit=30) {
-        return $this->find("columns: clasificados.*, categorias.nombre, ciudades.nombre ",
-                         "join: INNER JOIN categorias 
-           on clasificados.categoria_id = categorias.id
-             
-           INNER JOIN ciudades
-           on clasificados.ciudad_id = ciudades.id
-           and clasificados.registrado_at > CURRENT_DATE AND clasificados.site = 'AV'
-           ","order: clasificados.id DESC",
-                   "limit: $limit");
- 
-    } 
-    
-    // Fin Test pruebas
-   
-
- //    Obtener clasiciados para el rss
-
+///////////////////////////////////////////////////////////////////////////////  
+//    Obtener clasiciados para el rss
+///////////////////////////////////////////////////////////////////////////////  
           public function rss()
     {   return $this->find_all_by_sql("SELECT clasificados.id, clasificados.slug, clasificados.anuncio, clasificados.estado, clasificados.visitas,  clasificados.fecha_at, clasificados.registrado_at, categorias.nombre as categoria, ciudades.nombre as ciudad 
         FROM clasificados
@@ -197,7 +173,7 @@ public function ultimos($limit=30) {
             INNER JOIN ciudades
             on clasificados.ciudad_id = ciudades.id
             
-            Where clasificados.titulo ='$busqueda' OR ciudades.nombre LIKE '%$busqueda%' OR categorias.nombre LIKE '%$busqueda%' AND clasificados.estado = 1 AND clasificados.site = 'AV'
+            Where clasificados.titulo ='$busqueda' OR clasificados.anuncio LIKE '%$busqueda%' OR ciudades.nombre LIKE '%$busqueda%' OR categorias.nombre LIKE '%$busqueda%' AND clasificados.estado = 1 AND clasificados.site = 'AV'
             ORDER BY clasificados.id DESC";
     
     return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
@@ -243,9 +219,9 @@ public function ultimos($limit=30) {
     }     
     
     
-    
- //    Obtener clasiciados por id twitter
-        
+///////////////////////////////////////////////////////////////////////////////      
+//    Obtener clasiciados por id twitter
+///////////////////////////////////////////////////////////////////////////////          
         
          public function getMisClasificados( $twitter_id, $page=1, $ppage=20)
     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.twitter_id,clasificados.estado, clasificados.visitas, clasificados.registrado_at, clasificados.modificado_in, categorias.nombre as categoria, ciudades.nombre as ciudad 
@@ -264,8 +240,9 @@ public function ultimos($limit=30) {
     
     
     
-    
-  //    Obtener clasiciados con SLUG   y  fecha_baja mayor que
+///////////////////////////////////////////////////////////////////////////////              
+//    Obtener clasiciados con SLUG 
+///////////////////////////////////////////////////////////////////////////////          
             
         public function getInnerJoinClasificadosslug($slug)
      {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.estado, clasificados.visitas, clasificados.registrado_at, categorias.nombre as categoria, clasificados.ciudad_id, ciudades.nombre as ciudad
@@ -279,10 +256,11 @@ public function ultimos($limit=30) {
     return $this->find_by_sql($sql);     
     }
     
-  //    Obtener clasiciado Random
-    
+///////////////////////////////////////////////////////////////////////////////      
+//    Obtener clasiciado Random
+///////////////////////////////////////////////////////////////////////////////  
         public function getclasificadorandom()
-       {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.anuncio as minombre, clasificados.estado, clasificados.visitas, clasificados.registrado_at, categorias.nombre as categoria, clasificados.ciudad_id, ciudades.nombre as ciudad
+       {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.estado, clasificados.visitas, clasificados.registrado_at, categorias.nombre as categoria, clasificados.ciudad_id, ciudades.nombre as ciudad
             FROM clasificados
             INNER JOIN categorias 
             on clasificados.categoria_id = categorias.id
@@ -297,9 +275,9 @@ public function ultimos($limit=30) {
         
     
     
-     
+///////////////////////////////////////////////////////////////////////////////       
 //    Obtener Top visitas
-    
+///////////////////////////////////////////////////////////////////////////////      
     public function getInnerJoinTopvisitas($page=1, $ppage=20)
     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.registrado_at, clasificados.estado, clasificados.visitas,  categorias.nombre as categoria, ciudades.nombre as ciudad
             FROM clasificados
@@ -315,8 +293,10 @@ public function ultimos($limit=30) {
     return $this->paginate_by_sql($sql, "per_page: $ppage", "page: $page");        
     }  
     
-// Obtener Ciudad
     
+///////////////////////////////////////////////////////////////////////////////      
+// Obtener Ciudad
+///////////////////////////////////////////////////////////////////////////////      
     public function getInnerJoinCiudad($ciudad,$page=1, $ppage=20)
     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.anuncio, clasificados.estado, clasificados.visitas, clasificados.registrado_at,   categorias.nombre as categoria, ciudades.nombre as ciudad 
             FROM clasificados
@@ -334,9 +314,9 @@ public function ultimos($limit=30) {
     
     
 
-   
+///////////////////////////////////////////////////////////////////////////////     
 //Obtener Categorias
-    
+///////////////////////////////////////////////////////////////////////////////      
  public function getInnerJoinCategoria($categoria,$page=1, $ppage=20)
     {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.estado, clasificados.visitas, clasificados.registrado_at, categorias.nombre as categoria, ciudades.nombre as ciudad
             FROM clasificados

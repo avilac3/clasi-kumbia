@@ -119,7 +119,7 @@ if(Input::hasPost('clasificados')){
 $clasificadonew = Load::model('clasificados')->getInnerJoinClasificadosslug($clasificado->slug);                
 // para publicar tweet    
 // Mensaje        
-   $url = "http://avisoya.com/$clasificadonew->slug";
+   $url = "http://avisoya.com/clasificado/$clasificadonew->slug";
    $ciudad = (empty($clasificadonew->ciudad)) ? '' : "#{$clasificadonew->ciudad}";
    $categoria = (empty($clasificadonew->categoria)) ? '' : "#{$clasificadonew->categoria}";
        
@@ -208,7 +208,7 @@ $this->listClasificados = Load::model('clasificados')->getMisClasificados( $twit
 // Editar CLASIFICADO     
 /////////////////////////////////////////////////////////////////////////////////    
 
-public function edita($slugc) {
+public function edita($slug) {
 //    etiqueta title y description  
     $this->pageTitle = 'Edita tu clasificado gratis';
     $this->pageDescription = 'publica gratis tu casa, automovil, empleo y mucho mas clasificados gratis faciles y sencillos  clasificados neiva';

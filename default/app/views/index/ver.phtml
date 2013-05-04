@@ -12,7 +12,7 @@
 <?php if ($clasificado->vendido == 1){ flash::error('Esta Publicacion se encuentra vendida');}?>
 
 <div class="caja"> 
-    <div class="categoria_clasi"><?php //echo Html::img("$imgruta",''); ?></div>
+    <div class="categoria_clasi"><center><?php View::partial('adsense/468x60') ?></center></div>
     <h3 style="color:#000; padding: 0px 10px 0px 10px;"><?php echo strip_tags($clasificado->titulo) ?> </h3><hr>
     <div style="padding: 0px 10px 0px 10px;"><?php echo $clasificado->anuncio ?> </div>
                         

@@ -1,7 +1,9 @@
     <div class="span4 caja">
                 <div class="well well-small">
                     <span class="lead">Gratis Faciles y Rapidos</span>
-                </div><div style="margin-left: 10px; margin-right: 10px">
+                </div>
+                    <?php View::partial('adsense/300x250') ?>
+        <div style="margin-left: 10px; margin-right: 10px">
 
                     <div class="row-fluid">                    
 <div class="span6"><?php echo html::link('random', '<i class="icon-random"></i> random','') ?></div>
@@ -26,7 +28,7 @@
                         <div class='caja_categoria'> <?php echo Html::link("clasificados/$itemc->nombre/",$itemc->nombre)?></div>
                        <?php  endforeach; ?>
                            </div>
-                               <?php View::partial('adsense/300x600') ?>
+                               <?php// View::partial('adsense/300x600') ?>
 
         </div>
     </div>

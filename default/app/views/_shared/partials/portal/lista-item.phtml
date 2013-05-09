@@ -4,7 +4,7 @@
 <div class="row-fluid">
 
         <div class="span12" style="padding-left:10px;padding-right:10px;">
-            <strong><?php echo html::link("clasificado/$item->slug/", $item->titulo) ?></strong>
+            <h4><?php echo html::link("clasificado/$item->slug/", $item->titulo) ?></h4>
               <div class="" style="max-height:44px; overflow:hidden"><?php echo strip_tags($item->anuncio) ?> </div>
               <?php echo html::link("buscar/$item->categoria/",$item->categoria,'style="color:#e4004b;"') ?> - 
               <?php echo html::link("buscar/$item->ciudad/",$item->ciudad,'style="color:#e4004b;"') ?>

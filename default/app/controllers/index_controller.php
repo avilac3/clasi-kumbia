@@ -118,13 +118,16 @@ if(Input::hasPost('clasificados')){
                 
 $clasificadonew = Load::model('clasificados')->getInnerJoinClasificadosslug($clasificado->slug);                
 // para publicar tweet    
-// Mensaje        
+// Mensaje   
+   $adf = "http://api.adf.ly/api.php?key=339bd2360712b8efceea270983bea68e&uid=4078946&advert_type=int&domain=adf.ly&url=http://avisoya.com/clasificado/$clasificadonew->slug";
+   $adf2 = "http://adf.ly/4078946/avisoya.com/clasificado/$clasificadonew->slug";
    $url = "http://avisoya.com/clasificado/$clasificadonew->slug";
    $ciudad = (empty($clasificadonew->ciudad)) ? '' : "#{$clasificadonew->ciudad}";
    $categoria = (empty($clasificadonew->categoria)) ? '' : "#{$clasificadonew->categoria}";
-       
+
+   
     // Enviar Tweet
-$connection->post('statuses/update', array('status' => $clasificadonew->titulo.' '.$url.' '.$ciudad.' '.$categoria.' '));
+$connection->post('statuses/update', array('status' => $clasificadonew->titulo.' '.$adf2.' '.$ciudad.' '.$categoria.' '));
 
                 return Router::redirect("clasificado/$clasificado->slug/");
 

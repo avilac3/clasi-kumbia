@@ -298,7 +298,7 @@ class Clasificados extends ActiveRecord{
 // Obtener Ciudad
 ///////////////////////////////////////////////////////////////////////////////      
     public function getInnerJoinCiudad($ciudad,$page=1, $ppage=20)
-    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.anuncio, clasificados.estado, clasificados.visitas, clasificados.registrado_at,   categorias.nombre as categoria, ciudades.nombre as ciudad 
+    {   $sql = "SELECT clasificados.id, clasificados.slug, clasificados.titulo, clasificados.anuncio, clasificados.estado, clasificados.visitas, clasificados.registrado_at,   categorias.nombre as categoria, ciudades.nombre as ciudad 
             FROM clasificados
             INNER JOIN categorias 
             on clasificados.categoria_id = categorias.id

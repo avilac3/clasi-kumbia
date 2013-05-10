@@ -6,7 +6,6 @@
 
 ini_set('display_errors', 'Off');
 
-Load::Lib("recaptcha");
 Load::Lib("slug");
 Load::lib("twitteroauth");
 
@@ -103,10 +102,8 @@ session_start();
 $this->previousError = "";
 if(Input::hasPost('clasificados')){   
     if(SecurityKey::isValid()) {
-       if (Input::hasPost('recaptcha_response_field')){
-            // Realizamos la comprobacion
-            $ret = reCaptcha::validate();
-            if ($ret->is_valid) {
+ 
+
 //                $this->Clasificados = Input::post('clasificados');                      
              $clasificado = new Clasificados();              
             if($clasificado->guardar(Input::post('clasificados'))){
@@ -134,15 +131,9 @@ $connection->post('statuses/update', array('status' => $clasificadonew->titulo.'
               }else{ 
                   Flash::error($clasificado->error);                                                                             
               }
-            }
-            // Enviamos el error a la vista
-            $this->previousError = $ret->error;
-            Flash::error('Codigo AntiSpam proporcionado no es el correcto. por favor, inténtelo de nuevo.');
-        }else{
-                        //si no se ha enviando el captcha declaramas la variable a NULL
-                        $this->previousError = NULL;
-        }
-    }  
+
+    //
+   }  
          
 }
    
@@ -254,10 +245,6 @@ session_start();
 $this->previousError = "";
 if(Input::hasPost('clasificados')){   
     if(SecurityKey::isValid()) {
-       if (Input::hasPost('recaptcha_response_field')){
-            // Realizamos la comprobacion
-            $ret = reCaptcha::validate();
-            if ($ret->is_valid) {
 //                $this->Clasificados = Input::post('clasificados');                      
              $clasificado = new Clasificados();              
             if($clasificado->update(Input::post('clasificados'))){
@@ -270,20 +257,10 @@ if(Input::hasPost('clasificados')){
               }else{ 
                   Flash::error($clasificado->error);                                                                             
               }
-            }
-            // Enviamos el error a la vista
-            $this->previousError = $ret->error;
-            Flash::error('Codigo AntiSpam proporcionado no es el correcto. por favor, inténtelo de nuevo.');
-        }else{
-                        //si no se ha enviando el captcha declaramas la variable a NULL
-                        $this->previousError = NULL;
-        }
+
     }  
          
-}
-
-
-else {
+}else {
             //Aplicando la autocarga de objeto, para comenzar la edición
             $this->clasificados = $clasificado->find_by_slug($slug);
         }

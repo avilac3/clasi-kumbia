@@ -95,23 +95,13 @@
   </div>
 
 
-  <div class="control-group">
-    <label class="control-label st" for="recaptcha">Antispam</label>
-    <div class="controls">
-               <? // Cargamos la librería y le pedimos un código html
-            echo reCaptcha::html($previousError);?>
-
-    </div>
-  </div>
-
         <br><center><button type="submit" class="btn btn-large btn-danger">Publicar Anuncio</button></center>
 
      <?php echo SecurityKey::generateKey(); ?>         
      <?php echo Form::close() ?>
         </div>
     <div class="span4">
-        <?php echo html::img('avisotes.png','') ?>
-        <?php echo html::img('avisotes.png','') ?>
+        <?php echo view::partial('adsense/300x600') ?>
     </div>
 </div>
 </div>

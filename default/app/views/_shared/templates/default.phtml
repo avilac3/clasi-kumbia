@@ -3,20 +3,15 @@
  <head>
   <meta http-equiv='Content-type' content='text/html; charset=<?php echo APP_CHARSET ?>' />
   <meta name="Description" content="<?php echo $pageDescription ?>"/> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title><?php echo $pageTitle ?></title>
-     <?php Tag::css('b231/bootstrap') ?>
-     <?php Tag::css('b231/bootstrap-responsive') ?>
+     <?php Tag::css('b3/bootstrap') ?>
      <?php Tag::css('font-awesome.min')?>
      <?php Tag::css('b231/style')?>  
      <?php Tag::css('icon-social/zocial')?>  
      <?php //Tag::css('base')?>  
-         
-         
-  <?php // Tag::css('bienvenida') ?>
-  <?php Tag::css('style') ?>
-  <?php // Tag::css('scaffold') ?>
-  <?php // Tag::css('estilo') ?>
+     <?php Tag::css('style') ?>
   
   <?php echo Html::includeCss() ?>
   
@@ -27,7 +22,7 @@
 
  
  </head>
- <body><div class="container-980">
+ <body><div class="container">
         <?php View::partial('portal/header') ?>
 
         <?php View::content(); ?>
@@ -53,7 +48,8 @@
      
 
 </body>
-    <?php echo  Tag::js('bootstrap')?>
+    <?php echo  Tag::js('b3/bootstrap')?>
+<!--    <script src="http://cf.ads.kontextua.com/container/tags/37275.js"></script>  -->
 
 
 </html>

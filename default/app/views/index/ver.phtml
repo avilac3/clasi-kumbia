@@ -1,17 +1,18 @@
 <?php View::content(); ?>
-<?php View::partial('adsense/970x90h') ?>
+<?php // View::partial('adsense/970x90h') ?>
+<!-- <div class="kontextuaDisplayELEVATOR"></div> -->
 
-<div class="row-fluid">
+<div class="row">
 
     
-    <div class="span8 ">   
+    <div class="col-md-8 caja">   
 <?php if($mostrar):?>    
 
     
 <!--lista clasificados-->
 <?php if ($clasificado->vendido == 1){ flash::error('Esta Publicacion se encuentra vendida');}?>
 
-<div class="caja"> 
+<div class=""> 
     <h3 style="color:#000; padding: 0px 10px 0px 10px;"><?php echo strip_tags($clasificado->titulo) ?> </h3><hr>
     <div style="padding: 0px 10px 0px 10px;"><?php echo $clasificado->anuncio ?> </div>
                         
@@ -94,14 +95,14 @@ Por favor Habilite el  JavaScript
 <?php endif;?>
 
 
-<div class="span4">   
+<div class="col-md-4 caja">   
 <!-- barra lateral izquierda nav   -->
         <?php //View::partial('portal/lateral') ?>
         <?php //View::partial('adsense/160x600') ?>
-<br><?php view::partial('adsense/300x250') ?>
+        <?php // view::partial('adsense/300x250') ?>
 
-<div class="caja">
-                  <div class="well well-small">
+<div class="">
+                  <div class="page-header">
                     <span class="lead">Contacta al vendedor</span>
                 </div>
     <div style="padding: 10px">
@@ -141,7 +142,7 @@ Por favor Habilite el  JavaScript
 </div>
 
 
-<div><?php echo html::link('random', '<i class="icon-random"></i> random','class="btn btn-primary btn-large" style="width:90%;"') ?></div>
+<div><?php echo html::link('random', '<i class="icon-random"></i> random','class="btn btn-primary btn-lg" style="width:100%;"') ?></div>
     
     </div>
 

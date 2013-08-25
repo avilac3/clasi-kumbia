@@ -5,19 +5,30 @@
    theme : 'clean'  // [ red, white, blackglass, clean, custom ]
   };
 </script>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Los mejores clasificados de Colombia</h1>
+    <p>Publica clasificados con tu cuenta de twitter</p>
+    <p><?php echo html::link('publicar', 'Publica Ahora <i class="icon-twitter icon-2x"></i>','class="btn btn-primary" ')?></p>
+  </div>
+</div>
 
     <?php View::content(); ?>
 
-<div class="row-fluid">
-    <div class="span8 caja">
-        <div class="well well-small"><span class="lead">Clasificados Gratis Faciles y Rapidos</span></div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="caja">
+        <div class="page-header"><span class="lead">Clasificados Gratis Faciles y Rapidos</span></div>
 
     <!--lista clasificados-->
  <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"pag")) ?>
 <!--fin lista clasificados-->
     </div>
-    <div class="span4 caja">
+    </div>
+    <div class="col-md-4 ">
+        <div class="caja">
     <?php view::partial('portal/lateral'); ?>
+         </div>
     </div>
 
 

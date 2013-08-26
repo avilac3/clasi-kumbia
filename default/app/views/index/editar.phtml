@@ -1,11 +1,11 @@
-<div class="row-fluid caja">
+<div class="row caja">
     <?php echo $clasificado->titulo ?>
-    <div class="span1"><img src='<?php echo $credentials->profile_image_url; ?>'/></div>
-    <div class="span3"><h3><?php echo $credentials->screen_name ?></h3></div>
-    <div class="span5"><center><h5><?php echo $msg; ?></h5></center> </div>
+    <div class="col-md-1"><img src='<?php echo $credentials->profile_image_url; ?>'/></div>
+    <div class="col-md-3"><h3><?php echo $credentials->screen_name ?></h3></div>
+    <div class="col-md-5"><center><h5><?php echo $msg; ?></h5></center> </div>
 </div>
-    <div class="row-fluid">
-    <div class="span12 caja">
+    <div class="row caja">
+    <div class="col-md-12">
 
     <!--lista clasificados-->
  <?php View::partial('portal/lista-item-user', FALSE, array('listClasificados' => $listClasificados, 'url'=>"editar/pag")) ?>

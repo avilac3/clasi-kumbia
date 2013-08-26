@@ -2,7 +2,7 @@
  
 class ArchivosController extends AppController {
    
-  public function imagen() {
+  public function index() {
         View::select('index');  //para mostrar siempre la vista con los formularios
         if (Input::hasPost('oculto')) {  //para saber si se envió el form
  

@@ -12,6 +12,10 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex2-collapse">
           <?php echo html::link('publicar', 'Publica con <i class="icon-twitter icon-2x"></i>','class="navbar-right btn btn-info navbar-btn" ')?>
+          
+              <?php   if(Auth::is_valid()){ ?>
+                <?php echo html::link('<i class="icon-signout"></i>', 'Publica con <i class="icon-twitter icon-2x"></i>','class="navbar-right btn btn-info navbar-btn" ')?>
+              <?php }?>    
         </div>
       </nav>
 

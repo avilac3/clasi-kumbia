@@ -15,20 +15,16 @@
 
     <?php View::content(); ?>
 
-<div class="row">
+<div class="row caja">
     <div class="col-md-8">
-        <div class="caja">
         <div class="page-header"><span class="lead">Clasificados Gratis Faciles y Rapidos</span></div>
 
     <!--lista clasificados-->
  <?php View::partial('portal/lista-item', FALSE, array('listClasificados' => $listClasificados, 'url'=>"pag")) ?>
 <!--fin lista clasificados-->
     </div>
-    </div>
     <div class="col-md-4 ">
-        <div class="caja">
     <?php view::partial('portal/lateral'); ?>
-         </div>
     </div>
 
 

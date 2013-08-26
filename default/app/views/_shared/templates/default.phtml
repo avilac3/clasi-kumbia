@@ -24,6 +24,16 @@
  </head>
  <body><div class="container">
         <?php View::partial('portal/header') ?>
+         
+         
+<form role="form">
+      <div class="row">
+          <div class="col-lg-2"><button type="button" class="btn btn-default"><i class="icon-search icon-2x"></i></button></div>
+          <div class="col-lg-10"><input type="text" class="form-control input-lg" placeholder="Buscar"></div>
+      </div>
+      <br>
+
+    </form>
 
         <?php View::content(); ?>
 
@@ -49,6 +59,12 @@
 
 </body>
     <?php echo  Tag::js('b3/bootstrap')?>
+    <?php echo  Tag::js('jquery.timeago')?>
+<script>
+    jQuery(document).ready(function() {
+        jQuery("time.timeago").timeago();
+    });
+</script>
 <!--    <script src="http://cf.ads.kontextua.com/container/tags/37275.js"></script>  -->
 
 

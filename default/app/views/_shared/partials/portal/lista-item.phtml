@@ -6,6 +6,8 @@
               <div class="" style="max-height:44px; overflow:hidden"><p><?php echo strip_tags(mb_strtolower($item->anuncio ,'UTF-8')) ?> </p></div>
               <?php echo html::link("buscar/$item->categoria/",$item->categoria,'style="color:#e4004b;"') ?> - 
               <?php echo html::link("buscar/$item->ciudad/",$item->ciudad,'style="color:#e4004b;"') ?>
+              <time class="timeago" datetime="<?php echo $item->registrado_at ; ?>"></time>
+
               <hr>
          </div><!--/span-->
     

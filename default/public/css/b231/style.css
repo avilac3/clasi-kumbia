@@ -64,3 +64,9 @@ border-radius: 4px;
 .info-ad a{color: #3d4950;text-decoration: none;}
 .info-ad a:hover {color: #f36c3d;}
 .info-ad p{color: #a2b1b9;font-size: 16px;font-weight: 300;}
+
+
+/* timeago */
+.timeago{}
+
+.pagination{background-color: #3d4950 !important; }

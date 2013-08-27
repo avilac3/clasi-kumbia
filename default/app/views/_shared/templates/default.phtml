@@ -25,16 +25,22 @@
  <body><div class="container">
         <?php View::partial('portal/header') ?>
          
-         
-<form role="form">
-      <div class="row">
-          <div class="col-lg-2"><button type="button" class="btn btn-default"><i class="icon-search icon-2x"></i></button></div>
-          <div class="col-lg-10"><input type="text" class="form-control input-lg" placeholder="Buscar"></div>
+
+
+<?php echo Form::open('buscar/','GET'); // por defecto llama a la misma url ?>
+      <div class="col-lg-12">
+          <div class="input-group">
+              <?php echo Form::text('b','class="form-control input-lg" placeholder="Buscar Clasificados"'); ?>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="icon-search icon-2x"></i></button>                  
+              </span>
+
+          </div>
+          
       </div>
-      <br>
+<?php echo Form::close() ?>
 
-    </form>
-
+         
         <?php View::content(); ?>
 
         <?php View::partial('portal/footer') ?>

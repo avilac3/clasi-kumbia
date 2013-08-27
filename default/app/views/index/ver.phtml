@@ -137,7 +137,7 @@ Por favor Habilite el  JavaScript
     
     <?php if ($clasificado->email_estado == 1){ ?> <h5> <i class="icon-envelope"></i> <?php echo $clasificado->email ?></h5><?php }?>
     <h5><i class="icon-map-marker"></i> <?php echo $ciudad.', Colombia'  ?></h5>
-    <h5><i class="icon-time"></i> <?php echo $clasificado->registrado_at  ?></h5>
+    <h5><i class="icon-time"></i> <time class="timeago" datetime="<?php echo $clasificado->registrado_at ; ?>"></time></h5>
     </div>
 </div>
 

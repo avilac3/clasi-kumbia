@@ -12,9 +12,9 @@
 <!--lista clasificados-->
 <?php if ($clasificado->vendido == 1){ flash::error('Esta Publicacion se encuentra vendida');}?>
 
-<div class=""> 
-    <h3 style="color:#000; padding: 0px 10px 0px 10px;"><?php echo strip_tags($clasificado->titulo) ?> </h3><hr>
-    <div style="padding: 0px 10px 0px 10px;"><?php echo $clasificado->anuncio ?> </div>
+<div> 
+    <h3 class="page-header"><?php echo strip_tags($clasificado->titulo) ?> </h3>
+    <div><?php echo $clasificado->anuncio ?> </div>
                         
 
     
@@ -128,10 +128,10 @@ Por favor Habilite el  JavaScript
     <div>
 
         
-        
-        <h3 style="color:#e4004b;"><i class="icon-phone"></i> <span id="numero"><?php echo $clasificado->telefono; ?></span></span>
-        <a href="#" onclick="mostrarNumero() "style="font-size:0.7em;">Ver Telefono</a></h3>
-        <div class="mentel">Cuando llame diga que vio el numero en avisoya </div>
+        <div class="mentel">
+        <h3 style="color:#fff;"><i class="icon-phone"></i> <span id="numero"><?php echo $clasificado->telefono; ?></span></span>
+        <a href="#" onclick="mostrarNumero() "style="font-size:0.7em;color:#fff;">Ver Telefono</a></h3>
+        Cuando llame diga que vio el numero en avisoya </div>
     </div>    
     
     

@@ -13,7 +13,7 @@ class ArchivosController extends AppController {
             $archivo->setExtensions(array('jpg', 'png', 'gif'));//le asignamos las extensiones a permitir
             if ($archivo->isUploaded()) {
                 
-
+                echo $_FILES['archivo']['name'];
                 if ($archivo->save()) {
 
                     Flash::valid('Imagen subida correctamente...!!!');

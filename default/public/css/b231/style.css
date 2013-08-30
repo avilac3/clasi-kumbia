@@ -10,11 +10,12 @@ root { display: block;}
 
 body{background: #efeae8;/* background-image: url('https://static-mall.s3.amazonaws.com/img/grey.png') !important; */}
 
+.pd-l10{padding-left: 10%;}
+
 /* container personalizado*/
 
 .container{margin: 0 auto;max-width: 980px;}
-
-.navbar-orenge{background: #f36c3d;color: #fff; margin-bottom: 0px}
+.navbar-default{background: #f36c3d;color: #fff; margin-bottom: 0px}
 .navbar-brand{color:#fff;font-weight: 500;font-size: 3em;text-decoration: none;}
 .navbar-header a{color:#fff !important;}
 .tagline {line-height: 30px; font-size: 1.5em;float: left;color: rgba(255,255,255,.6);}
@@ -23,9 +24,8 @@ body{background: #efeae8;/* background-image: url('https://static-mall.s3.amazon
 .page-header .lead{ font-weight: 300 !important; color: #a2b1b9; padding-left: 5%;}
 .lead {font-weight: 400 !important; color: #a2b1b9}
 .well {background-color: #414141 !important;}
-.jumbotron{margin-bottom: 0px; background: none}
+.jumbotron{margin-bottom: 0px; margin-top: 0px; padding-top: 0px; padding-bottom: 0px; background: none}
 
-.st{font-weight: bold;}
 
 .caja{
 position: relative;

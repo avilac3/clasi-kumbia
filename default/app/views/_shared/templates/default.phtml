@@ -5,15 +5,15 @@
   <meta name="Description" content="<?php echo $pageDescription ?>"/> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <link rel="shortcut icon" href="<?php echo PUBLIC_PATH ?>default/public/ico/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo PUBLIC_PATH ?>public/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="<?php echo PUBLIC_PATH ?>default/public/ico/apple-touch-icon-144-precomposed.png">
+          href="<?php echo PUBLIC_PATH ?>public/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="<?php echo PUBLIC_PATH ?>default/public/ico/apple-touch-icon-114-precomposed.png">
+          href="<?php echo PUBLIC_PATH ?>public/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72"
-          href="<?php echo PUBLIC_PATH ?>default/public/ico/apple-touch-icon-72-precomposed.png">
+          href="<?php echo PUBLIC_PATH ?>public/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed"
-          href="<?php echo PUBLIC_PATH ?>default/public/ico/apple-touch-icon-57-precomposed.png">
+          href="<?php echo PUBLIC_PATH ?>public/ico/apple-touch-icon-57-precomposed.png">
 
 
   <title><?php echo $pageTitle ?></title>
@@ -21,6 +21,7 @@
      <?php Tag::css('font-awesome.min')?>
      <?php Tag::css('b231/style')?>  
      <?php Tag::css('icon-social/zocial')?>  
+     <?php Tag::css('animate/animate')?>  
      <?php //Tag::css('base')?>  
      <?php Tag::css('style') ?>
   
@@ -39,7 +40,7 @@
 
 
 <?php echo Form::open('buscar/','GET'); // por defecto llama a la misma url ?>
-      <div class="col-lg-12">
+      <div class="col-lg-12 animated bounceInDown">
           <div class="input-group">
               <?php echo Form::text('b','class="form-control input-lg" placeholder="Buscar Clasificados"'); ?>
               <span class="input-group-btn">
@@ -82,7 +83,7 @@
         jQuery("time.timeago").timeago();
     });
 </script>
-<!--    <script src="http://cf.ads.kontextua.com/container/tags/37275.js"></script>  -->
+ <!--   <script src="http://cf.ads.kontextua.com/container/tags/37275.js"></script>  -->
 
 
 </html>

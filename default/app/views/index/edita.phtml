@@ -11,7 +11,7 @@
 
    <?php View::content(); ?>
 <div class="caja">
-<div class="page-header"><h3>Clasificados Gratis Faciles y Rapidos</h3></div>
+<div class="page-header pd-l10"><h3>Clasificados Gratis Faciles y Rapidos</h3></div>
 
     <div class="row caja"> 
 
@@ -38,61 +38,75 @@
     <?php echo Form::hidden('clasificados.id') ?>
     <?php echo Form::hidden('clasificados.codigosecurity');?>
 
-    
-  <div class="control-group">
-    <label class="control-label st" for="selectCategoria">Categoria</label>
-    <div class="controls">
-          <?php echo Form::dbSelect('clasificados.categoria_id', 'nombre',array('categorias', 'find'), '-- seleccione categoria --','class="input-block-level" required') ?>
+  <div class="form-group">
+    <label class="col-lg-2 control-label" for="selectCategoria">Categoria</label>
+    <div class="col-lg-10">
+          <?php echo Form::dbSelect('clasificados.categoria_id', 'nombre',array('categorias', 'find'), '-- seleccione categoria --','class="form-control" required') ?>
     </div>
-  </div>
+  </div>        
+    
 
-  <div class="control-group">
-    <label class="control-label st" for="SelectCiudad">Ciudad</label>
-    <div class="controls">
-    <?php echo Form::dbSelect('clasificados.ciudad_id', 'nombre',array('ciudades', 'find'), '-- seleccione Ciudad --','class="input-block-level" required') ?>    </div>
-  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label" for="SelectCiudad">Ciudad</label>
+    <div class="col-lg-10">
+    <?php echo Form::dbSelect('clasificados.ciudad_id', 'nombre',array('ciudades', 'find'), '-- seleccione Ciudad --','class="form-control"  required') ?>    </div>
+  </div>        
 
-  <div class="control-group">
-    <label class="control-label st" for="inputTitulo">Titulo</label>
-    <div class="controls">
-        <?php  echo Form::text('clasificados.titulo','class="input-block-level" maxlength="90" placeholder="Titulo del anuncio…" required'); ?>
+  <div class="form-group">
+    <label class="col-lg-2 control-label" for="inputTitulo">Titulo</label>
+    <div class="col-lg-10">
+        <?php  echo Form::text('clasificados.titulo','class="form-control"  maxlength="90" placeholder="Titulo del anuncio…" required'); ?>
+    </div>
+  </div> 
+
+  <div class="form-group">
+    <label class="col-lg-2 control-label" for="TextareaAnuncio">Anuncio</label>
+    <div class="col-lg-10">
+        <?php  echo Form::textarea('clasificados.anuncio','class="form-control"  rows="6" '); ?>
+        <?php View::partial('portal/nicedit'); ?>
     </div>
   </div> 
         
+           
         
-  <div class="control-group">
-    <label class="control-label st" for="TextareaAnuncio">Anuncio</label>
-    <div class="controls">
-        <?php  echo Form::textarea('clasificados.anuncio','class="input-block-level" rows="6" '); ?>
-        <?php View::partial('portal/nicedit'); ?>
-    </div>
-  </div>        
+        <div class="page-header pd-l10"><h3>Datos del Vendedor</h3></div>
 
-    
+  <div class="form-group">
+    <label class="col-lg-2 control-label" for="inputEmail">Email</label>
+    <div class="col-lg-10 ">
+        <?php  echo Form::text('clasificados.email','class="form-control"  placeholder="Email Valido" required'); ?>
         
-        <div class="well well-small"><h3>Datos del Vendedor</h3></div>
-
-  <div class="control-group">
-    <label class="control-label st" for="inputEmail">Email</label>
-    <div class="controls">
-        <?php  echo Form::text('clasificados.email','class="input-block-level" placeholder="Email Valido" required'); ?>
     </div>
   </div>
         
-  <div class="control-group">
-    <label class="control-label st" for="inputEmail"></label>
-    <div class="controls ">
-<?php echo Form::radio("clasificados.email_estado", '1', NULL, true);?> Mostrar Email  
-<?php echo Form::radio("clasificados.email_estado", '0','class="radio" style="margin-left:10px;"', false);?> No mostrar Email.        
-    </div>
-  </div>          
 
-  <div class="control-group">
-    <label class="control-label st" for="inputTelefono">Telefono</label>
-    <div class="controls">
-        <?php  echo Form::text('clasificados.telefono','class="input-block-level" placeholder="Telefono…" required'); ?>
+        
+
+
+  <div class="form-group">
+     <label class="col-lg-2 control-label"></label>
+      <div class="col-lg-10 ">
+          <label class="radio-inline">
+              <?php echo Form::radio("clasificados.email_estado", '1', NULL, true);?> Mostrar Email  
+          </label>
+          
+          <label class="radio-inline">
+              <?php echo Form::radio("clasificados.email_estado", '0','class="radio"', false);?> No mostrar Email.
+          </label>
+      </div>
+  </div>
+        
+
+        
+
+  <div class="form-group">
+    <label class="col-lg-2 control-label" for="inputTelefono">Telefono</label>
+    <div class="col-lg-10">
+        <?php  echo Form::text('clasificados.telefono','class="form-control"  placeholder="Telefono…" required'); ?>
     </div>
   </div>
+        
+        
 
 
         <br><center><button type="submit" class="btn btn-large btn-danger">Publicar Anuncio</button></center>

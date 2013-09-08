@@ -1,33 +1,36 @@
                 <div class="page-header">
                     <span class="lead">Gratis Faciles y Rapidos</span>
                 </div>
+
+<div class="btn-group btn-group-justified">
+    <?php echo html::link('random', '<i class="icon-random"></i> random','class="btn btn-danger"') ?>
+    <?php echo html::link('topvisitas', '<i class="icon-thumbs-up"></i> Top Visitas','class="btn btn-danger"') ?>
+
+      </div>
                     <?php // View::partial('adsense/300x250') ?>
                     <div class="kontextuaDisplayREGULARSS300x250"></div>
         <div style="margin-left: 10px; margin-right: 10px">
 
-                    <div class="row">                    
-<div class="col-md-6"><?php echo html::link('random', '<i class="icon-random"></i> random','class="btn btn-danger"') ?></div>
-<div class="col-md-6"><?php echo html::link('topvisitas', '<i class="icon-thumbs-up"></i> Top Visitas','class="btn btn-danger"') ?></div>
-</div>
-                    
-                    <hr><h4><i class="icon-th-list"></i> Categorias</h4><hr>
-             <div style="width:100%; float:left; margin: 10px;">
-                        <?php $categorias = Load::model('categorias')->find("order: rand()"); foreach ($categorias as $item) : ?>
+            <br>                    
+             <div class="list-group">
+                   <a href="#" class="list-group-item active"><i class="icon-th-list"></i> Categorias</a>
 
-                     <div class='caja_categoria'> <?php echo Html::link("categoria/$item->nombre/",$item->nombre) ?></div>
+                 <?php $categorias = Load::model('categorias')->find("order: rand()"); foreach ($categorias as $item) : ?>
+                 
+                 <?php echo Html::link("categoria/$item->nombre/",$item->nombre,'class="list-group-item"') ?>
                      <?php endforeach; ?>
 
              </div> 
-                           <div style="width:100%; float:left; margin-bottom: 15px;">
+                    <div class="list-group">
       
-                    <hr><h4><i class="icon-building"></i> Ciudades</h4><hr>
-             <ul>
+                   <a href="#" class="list-group-item active"><i class="icon-building"></i> Ciudades</a>
+             
                   <?php $ciudades = Load::model('ciudades')->find("order: rand()");
                         foreach ($ciudades as $itemc) : ?>
                  
-                        <div class='caja_categoria'> <?php echo Html::link("clasificados/$itemc->nombre/",$itemc->nombre)?></div>
-                       <?php  endforeach; ?><hr>
-                           </div>
+                        <?php echo Html::link("clasificados/$itemc->nombre/",$itemc->nombre,'class="list-group-item"')?>
+                       <?php  endforeach; ?>
+                      </div>
                     
                     <div class="row"><hr><h4><i class="icon-spinner icon-spin"></i> Permanece conectado:</h4><hr>
                     <a href="https://twitter.com/avisoya" class="twitter-follow-button" data-show-count="false" data-lang="es" data-size="large">Seguir a @avisoya</a>
@@ -37,6 +40,8 @@
                     
                     
                     <?php view::partial('portal/sponsor') ?>
+                    
+                    <center><?php echo html::img('portal/banner-avisoya.jpg','','class="img-responsive"') ?></center>
                     
 
         </div>
